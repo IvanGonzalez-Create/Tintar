@@ -1,42 +1,29 @@
 import Logo from '../../../public/TINTAR LOGO.png'
-import { useState, useEffect } from 'react'
+import { useScrolled } from '../../hooks/useScrolled'
+import { useLockBodyScroll } from '../../hooks/useLockBodyScroll'
+import { useState } from 'react'
+
 
 export default function Navbar() {
 
-    const [ isOpen, setIsOpen ] = useState(false)
-    const [scrolled, setScrolled] = useState(false)
+    const [isOpen, setIsOpen] = useState<boolean>(false);
 
-    
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 10);
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    const scrolled = useScrolled(10);
+    useLockBodyScroll(isOpen);
 
 
 
-  useEffect(() => {
-    if (isOpen) {
-        document.body.style.overflow = "hidden";
-    } else {
-        document.body.style.overflow = "";
+    type NavLink = {
+        label: string
+        href: `#${string}`
     }
-    return () => {
-        document.body.style.overflow = "";
-    };
-}, [isOpen]);
 
-
-
-    const navLinks = [
+    const navLinks : NavLink[] = [
         { label: 'Inicio', href: '#home' },
         { label: 'Productos', href: '#productos' },
         { label: 'Servicios', href: '#servicios' },
         { label: 'Contacto', href: '#contacto'},
-]
+    ]
 
 
 
@@ -45,10 +32,13 @@ export default function Navbar() {
   return (
     <>
 
-    <header   
-    className = {`fixed top-0 left-0 w-full z-30 transition-all duration-300
-    ${scrolled ? "bg-[#F8EDEE] shadow-sm border-b border-[#6B0F1A]/10"  : "bg-[#F8EDEE]/70 backdrop-blur-md"}`}
-    >
+<header
+  className={`fixed top-0 left-0 w-full z-30 transition-all duration-300
+    ${scrolled
+      ? "bg-[#F8EDEE]/40 backdrop-blur-md shadow-md border-b border-[#6B0F1A]/10"
+      : "bg-[#fce7e7] shadow-sm border-b border-[#6B0F1A]/10"
+    }`}
+>
         <nav className='container mx-auto max-w-7xl px-6 h-16 flex items-center justify-between'>
 
             <div className="text-xl font-bold">
