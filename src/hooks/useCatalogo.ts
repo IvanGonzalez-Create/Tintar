@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { categorias } from "../data/Categorias";
+import { categorias } from "../data/categorias";
+import { productos } from "../data/productos";
 
 export const useCatalogo = () => {
   const [categoriaActiva, setCategoriaActiva] = useState<string>(categorias[0].id);
@@ -14,6 +15,16 @@ export const useCatalogo = () => {
     setSubcategoriaActiva(null);
   };
 
+  const productosFiltrados = subcategoriaActiva
+  ? productos.filter(
+      (producto) => producto.subcategoriaId === subcategoriaActiva
+    )
+  : [];
+
+
+
+
+
   return {
     categorias,
     categoriaActiva,
@@ -21,5 +32,6 @@ export const useCatalogo = () => {
     categoriaSeleccionada,
     cambiarCategoria,
     setSubcategoriaActiva,
+    productosFiltrados,
   };
 };

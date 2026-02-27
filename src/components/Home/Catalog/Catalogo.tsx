@@ -1,5 +1,7 @@
-import { useCatalogo } from "../../hooks/useCatalogo";
+import { useCatalogo } from "../../../hooks/useCatalogo";
 import { useState ,useRef, useEffect } from "react";
+import ProductosGrid from "./ProductosGrid";
+
 
 export default function Catalogo() {
 
@@ -10,6 +12,7 @@ export default function Catalogo() {
     categoriaSeleccionada,
     cambiarCategoria,
     setSubcategoriaActiva,
+    productosFiltrados,
   } = useCatalogo();
 
  
@@ -31,11 +34,10 @@ export default function Catalogo() {
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
-
     return () => observer.disconnect();
   }, []);
 
- 
+
 
   return (
     <section
@@ -97,9 +99,16 @@ export default function Catalogo() {
             </div>
           )}
 
+          
+            <div className="mt-16 min-h-[300px]">
+              <ProductosGrid productos={productosFiltrados} />
+            </div>
+            
+
           </div>
 
           </section>
+          
 
           );
           
