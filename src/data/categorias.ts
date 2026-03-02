@@ -39,6 +39,10 @@ export const categorias : Categoria[] = [
     subcategorias: [
       { id: "mouse", nombre: "Mouse" },
       { id: "teclado", nombre: "Teclado" },
+      { id: "auriculares", nombre: "Auriculares"},
+      { id: "monitor", nombre: "Monitor" },
+      { id: "hardware", nombre: "Hardware" },
+      { id: "parlante", nombre: "Parlantes" },
     ],
   },
   {
@@ -46,8 +50,8 @@ export const categorias : Categoria[] = [
     nombre: "Librería",
     destacada: true,
     subcategorias: [
-      { id: "cuadernos", nombre: "Cuadernos" },
-      { id: "lapiceras", nombre: "Lapiceras" },
+      { id: "escritura", nombre: "Escritura" },
+      { id: "sujecion", nombre: "Sujecion" },
     ],
   },
 ];

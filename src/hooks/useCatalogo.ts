@@ -4,7 +4,7 @@ import { productos } from "../data/productos";
 
 export const useCatalogo = () => {
   const [categoriaActiva, setCategoriaActiva] = useState<string>(categorias[0].id);
-  const [subcategoriaActiva, setSubcategoriaActiva] = useState<string | null>(null);
+  const [subcategoriaActiva, setSubcategoriaActiva] = useState<string>( categorias[0].subcategorias[0]?.id || "" );
 
   const categoriaSeleccionada = categorias.find(
     (cat) => cat.id === categoriaActiva
@@ -12,7 +12,12 @@ export const useCatalogo = () => {
 
   const cambiarCategoria = (id: string) => {
     setCategoriaActiva(id);
-    setSubcategoriaActiva(null);
+
+    const categoria = categorias.find((cat) => cat.id === id);
+
+    if (categoria && categoria.subcategorias.length > 0) {
+      setSubcategoriaActiva(categoria.subcategorias[0].id);
+    }
   };
 
   const productosFiltrados = subcategoriaActiva

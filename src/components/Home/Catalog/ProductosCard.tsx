@@ -28,7 +28,7 @@ export default function ProductoCard({ producto }: Props) {
         type="button"
         className="mt-4 w-full bg-[#6B0F1A] text-white py-1.5 rounded-md text-xs font-medium transition hover:opacity-90"
       >
-        Consultar
+        Ver Catalogo
       </button>
     </div>
   );
