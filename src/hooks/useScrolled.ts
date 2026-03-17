@@ -15,5 +15,7 @@ export function useScrolled(offset: number = 10): boolean {
     };
   }, [offset]);
 
+  
+
   return scrolled;
 }
