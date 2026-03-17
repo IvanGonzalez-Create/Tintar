@@ -40,8 +40,7 @@ export default function Catalogo() {
   if (productoActivo) {
     return (
       <ProductosView
-        subcategoriaId={productoActivo}
-        productos={productosFiltrados}
+        marca={productoActivo}
         onBack={() => setProductoActivo(null)}
       />
     );
@@ -108,9 +107,17 @@ export default function Catalogo() {
         <div className="mt-16 min-h-[300px]">
           <ProductosGrid
             productos={productosFiltrados}
-            onConsultar={(producto: Producto) =>
-              setProductoActivo(producto.subcategoriaId)
-            }
+            onConsultar={(producto: Producto) => {
+            sectionRef.current?.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+
+            setTimeout(() => {
+              setProductoActivo(producto.marca);
+            }, 200);
+
+          }}
           />
         </div>
       </div>

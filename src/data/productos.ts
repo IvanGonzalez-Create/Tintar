@@ -1,15 +1,16 @@
-
-
-
 export type Producto = {
-  id: string
-  nombre: string
-  descripcion: string
-  marca: string
-  imagen: string
-  categoriaId: string
-  subcategoriaId: string
-}
+  id: string;
+  nombre: string;
+  descripcion: string;
+  marca: string;
+  imagen: string;
+  categoriaId: string;
+  subcategoriaId: string;
+  tipo?: string;
+  detalle?: string;
+  capacidad?: string;
+  modelo?: string;
+};
 
 export const productos: Producto[] = [
   {
@@ -19,7 +20,7 @@ export const productos: Producto[] = [
     marca: "brother",
     imagen: "/Productos/toner-brother-tn-1060(Original).jpeg",
     categoriaId: "toners",
-    subcategoriaId: "originales"
+    subcategoriaId: "originales",
   },
   {
     id: "toners-hp",
@@ -28,7 +29,7 @@ export const productos: Producto[] = [
     marca: "hp",
     imagen: "/Productos/toner-HP-30A(Original).jpeg",
     categoriaId: "toners",
-    subcategoriaId: "originales"
+    subcategoriaId: "originales",
   },
   {
     id: "toners-epson",
@@ -37,7 +38,7 @@ export const productos: Producto[] = [
     marca: "epson",
     imagen: "/Productos/toner-epson(Original).png",
     categoriaId: "toners",
-    subcategoriaId: "originales"
+    subcategoriaId: "originales",
   },
   {
     id: "toners-ricoh",
@@ -46,7 +47,7 @@ export const productos: Producto[] = [
     marca: "ricoh",
     imagen: "/Productos/toner-Ricoh-P311(Original).jpeg",
     categoriaId: "toners",
-    subcategoriaId: "originales"
+    subcategoriaId: "originales",
   },
   {
     id: "toners-xerox",
@@ -55,7 +56,7 @@ export const productos: Producto[] = [
     marca: "xerox",
     imagen: "/Productos/Toner-Xerox-phaser-3020-3025(Original).jpeg",
     categoriaId: "toners",
-    subcategoriaId: "originales"
+    subcategoriaId: "originales",
   },
   {
     id: "toners-kyocera",
@@ -64,7 +65,7 @@ export const productos: Producto[] = [
     marca: "kyocera",
     imagen: "/Productos/Toner-Kyocera-TK-172(Original).jpeg",
     categoriaId: "toners",
-    subcategoriaId: "originales"
+    subcategoriaId: "originales",
   },
   {
     id: "toners-lexmark",
@@ -73,59 +74,17 @@ export const productos: Producto[] = [
     marca: "lexmark",
     imagen: "/Productos/toner-Lexmark-51b4000(Original).jpeg",
     categoriaId: "toners",
-    subcategoriaId: "originales"
+    subcategoriaId: "originales",
   },
-
   {
-    id: "toners-GTC",
-    nombre: "Toners GTC",
-    descripcion: "Compatibles de alto rendimiento con impresión homogénea.",
-    marca: "gtc",
-    imagen: "/Productos/toner-gtc.jpeg",
+    id: "toners-laser-gold",
+    nombre: "Toners Alternativos",
+    descripcion: "Opciones económicas y de alto rendimiento.",
+    marca: "generico",
+    imagen: "/Productos/Toners-Alternativos.png",
     categoriaId: "toners",
-    subcategoriaId: "alternativos"
+    subcategoriaId: "alternativos",
   },
-
-  {
-    id: "toners-MAGNA-(MGN)",
-    nombre: "Toner MAGNA (MGN)",
-    descripcion: "Cartucho alternativo con desempeño técnico confiable.",
-    marca: "magna (mgn)",
-    imagen: "/Productos/toner-mgn.jpeg",
-    categoriaId: "toners",
-    subcategoriaId: "alternativos"
-  },
-
-  {
-    id: "toners-B-BOX",
-    nombre: "Toner B-BOX",
-    descripcion: "Compatible optimizado para impresión eficiente.",
-    marca: "b-box",
-    imagen: "/Productos/b-box.jpeg",
-    categoriaId: "toners",
-    subcategoriaId: "alternativos"
-  },
-
-  {
-    id: "toners-LASER-GOLD",
-    nombre: "Toner LASER GOLD",
-    descripcion: "Alternativo premium con estabilidad y alto rendimiento.",
-    marca: "laser-gold",
-    imagen: "/Productos/toner-laser-gold.jpeg",
-    categoriaId: "toners",
-    subcategoriaId: "alternativos"
-  },
-
-  {
-    id: "toners-Global-Market",
-    nombre: "Global Market",
-    descripcion: "Solución compatible con rendimiento técnico equilibrado.",
-    marca: "global-market",
-    imagen: "/Productos/global-market.jpeg",
-    categoriaId: "toners",
-    subcategoriaId: "alternativos"
-  },
-
   {
     id: "resma-autor-a4-80g",
     nombre: "Resma Autor A4",
@@ -133,9 +92,8 @@ export const productos: Producto[] = [
     marca: "autor",
     imagen: "/Productos/resma-autor-a4-80g.jpeg",
     categoriaId: "papeles",
-    subcategoriaId: "80gramos" 
+    subcategoriaId: "80gramos",
   },
-
   {
     id: "resma-autor-a4-75g",
     nombre: "Resma Autor A4",
@@ -143,9 +101,8 @@ export const productos: Producto[] = [
     marca: "autor",
     imagen: "/Productos/resma-Autor-A4-75g.jpeg",
     categoriaId: "papeles",
-    subcategoriaId: "75gramos" 
+    subcategoriaId: "75gramos",
   },
-
   {
     id: "resma-punax-a4-75g",
     nombre: "Resma Punax A4",
@@ -153,9 +110,8 @@ export const productos: Producto[] = [
     marca: "punax",
     imagen: "/Productos/resma-punax-a4-75g.jpeg",
     categoriaId: "papeles",
-    subcategoriaId: "75gramos" 
+    subcategoriaId: "75gramos",
   },
-
   {
     id: "resma-pampa-a4-70g",
     nombre: "Resma Pampa A4",
@@ -163,25 +119,24 @@ export const productos: Producto[] = [
     marca: "pampa",
     imagen: "/Productos/resma-pampa-a4-70g.jpeg",
     categoriaId: "papeles",
-    subcategoriaId: "70gramos" 
+    subcategoriaId: "70gramos",
   },
-  
   {
-    id: "epson-l3250",
+    id: "impresora-epson-l3250",
     nombre: "Epson EcoTank L3250",
     descripcion: "Impresora multifunción con sistema continuo.",
-    marca: "epsonwae",
+    marca: "epson",
     imagen: "/Productos/epson-l3250.jpg",
     categoriaId: "tecnologia",
-    subcategoriaId: "mouse" 
+    subcategoriaId: "hardware",
   },
   {
-    id: "Cuaderno A4 cuadriculado",
-    nombre: "Cuaderno A4 cuadriculado",
-    descripcion: "Cuaderno A4 cuadriculado con tapa de cuero.",
-    marca: "A5",
-    imagen: "/productos/cartucho-canon-245.jpg",
-    categoriaId: "Libreria",
-    subcategoriaId: "cuadernos"
-  }
-]
+    id: "sujecion-libreria",
+    nombre: "Grapadoras",
+    descripcion: "Accesorios de sujeción.",
+    marca: "maped",
+    imagen: "/Productos/Grapadoras.jpeg",
+    categoriaId: "libreria",
+    subcategoriaId: "sujecion",
+  },
+];
