@@ -40,7 +40,7 @@ export const categorias : Categoria[] = [
 
       { id: "perifericos", nombre: "Perifericos" },
       { id: "hardware", nombre: "Hardware" },
-      { id: "estereo", nombre: "Estereo" },
+      { id: "audio", nombre: "Audio" },
     ],
   },
   {

@@ -1,5 +1,5 @@
 import { useCatalogo } from "../../../hooks/useCatalogo";
-import { useState ,useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import ProductosGrid from "./ProductosGrid";
 import { ProductosView } from "./ProductosView";
 import type { Producto } from "../../../data/productos";
@@ -16,7 +16,7 @@ export default function Catalogo() {
   } = useCatalogo();
 
   const [visible, setVisible] = useState(false);
-  const [productoActivo, setProductoActivo] = useState<string | null>(null);
+  const [productoActivo, setProductoActivo] = useState<Producto | null>(null);
   const sectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function Catalogo() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setVisible(true);
-          observer.disconnect(); 
+          observer.disconnect();
         }
       },
       { threshold: 0.2 }
@@ -33,14 +33,14 @@ export default function Catalogo() {
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
+
     return () => observer.disconnect();
   }, []);
 
-  // Si hay una subcategoría activa, mostramos ProductosView
   if (productoActivo) {
     return (
       <ProductosView
-        marca={productoActivo}
+        productoActivo={productoActivo}
         onBack={() => setProductoActivo(null)}
       />
     );
@@ -60,7 +60,6 @@ export default function Catalogo() {
           </p>
         </div>
 
-        {/* Categorías */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {categorias.map((cat) => (
             <button
@@ -77,7 +76,6 @@ export default function Catalogo() {
           ))}
         </div>
 
-        {/* Subcategorías */}
         {categoriaSeleccionada && (
           <div className="mt-12 flex flex-wrap justify-center gap-6 fade-sub visible">
             {categoriaSeleccionada.subcategorias.map((sub) => (
@@ -103,21 +101,19 @@ export default function Catalogo() {
           </div>
         )}
 
-        {/* Grilla general de productos */}
         <div className="mt-16 min-h-[300px]">
           <ProductosGrid
             productos={productosFiltrados}
             onConsultar={(producto: Producto) => {
-            sectionRef.current?.scrollIntoView({
-              behavior: "smooth",
-              block: "start"
-            });
+              sectionRef.current?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
 
-            setTimeout(() => {
-              setProductoActivo(producto.marca);
-            }, 200);
-
-          }}
+              setTimeout(() => {
+                setProductoActivo(producto);
+              }, 200);
+            }}
           />
         </div>
       </div>

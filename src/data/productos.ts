@@ -10,6 +10,7 @@ export type Producto = {
   detalle?: string;
   capacidad?: string;
   modelo?: string;
+  listaId?: string;
 };
 
 export const productos: Producto[] = [
@@ -122,21 +123,89 @@ export const productos: Producto[] = [
     subcategoriaId: "70gramos",
   },
   {
-    id: "impresora-epson-l3250",
-    nombre: "Epson EcoTank L3250",
-    descripcion: "Impresora multifunción con sistema continuo.",
-    marca: "epson",
-    imagen: "/Productos/epson-l3250.jpg",
+    id: "componentes",
+    nombre: "Componentes",
+    descripcion: "Todo lo necesario para armar o mejorar tu PC.",
+    marca: "hardware",
+    imagen: "/Productos/Hardware-Imagen.png",
     categoriaId: "tecnologia",
     subcategoriaId: "hardware",
+    listaId:"componentes"
   },
+   {
+    id: "monitores",
+    nombre: "Monitores",
+    descripcion: "Pantallas de alto rendimiento para trabajo, diseño y entretenimiento.",
+    marca: "hardware",
+    imagen: "/Productos/Monitores.png",
+    categoriaId: "tecnologia",
+    subcategoriaId: "Hardware",
+    listaId:"monitores"
+  },
+
+  {
+    id: "teclados-mouse",
+    nombre: "Teclados & Mouse",
+    descripcion: "Precisión y comodidad para productividad y gaming.",
+    marca: "",
+    imagen: "/Productos/Teclados-Mouse.png",
+    categoriaId: "tecnologia",
+    subcategoriaId: "perifericos",
+    listaId:"teclados-mouse"
+  },
+
+  {
+    id: "parlantes",
+    nombre: "Parlantes",
+    descripcion: "Potencia y claridad para disfrutar del audio en cualquier espacio.",
+    marca: "",
+    imagen: "/Productos/Parlantes.png",
+    categoriaId: "tecnologia",
+    subcategoriaId: "Audio",
+    listaId:"parlantes"
+  },
+   {
+    id: "auriculares",
+    nombre: "Auriculares",
+    descripcion: "Sonido de calidad para música, gaming y trabajo diario.",
+    marca: "",
+    imagen: "/Productos/Auriculares.png",
+    categoriaId: "tecnologia",
+    subcategoriaId: "Audio",
+    listaId:"auriculares"
+  },
+
+  
   {
     id: "sujecion-libreria",
     nombre: "Grapadoras",
-    descripcion: "Accesorios de sujeción.",
+    descripcion: "Elementos para sujetar y organizar documentos de forma práctica.",
     marca: "maped",
     imagen: "/Productos/Grapadoras.jpeg",
     categoriaId: "libreria",
     subcategoriaId: "sujecion",
+    listaId:"grapadoras"
+    
+  },
+
+  {
+    id: "accesorios-libreria",
+    nombre: "Accesorios de Sujecion",
+    descripcion: "Consumibles para abrochar y fijar hojas con firmeza.",
+    marca: "",
+    imagen: "/Productos/Clips.png",
+    categoriaId: "libreria",
+    subcategoriaId: "Sujecion",
+    listaId:"accesorios"
+  },
+    {
+    id: "utiles-de-escritura",
+    nombre: "Utiles de Escritura",
+    descripcion: "Soluciones de escritura confiables para entornos educativos y laborales.",
+    marca: "",
+    imagen: "/Productos/Escritura.png",
+    categoriaId: "libreria",
+    subcategoriaId: "escritura",
+    listaId:"utiles-escritura"
   },
 ];
