@@ -11,7 +11,7 @@ type Props = {
 export const ProductosView = ({ productoActivo, onBack }: Props) => {
   const [busqueda, setBusqueda] = useState("");
   const [paginaActual, setPaginaActual] = useState(1);
-  const [animando, setAnimando] = useState(false);
+  const [animandoLista, setAnimandoLista] = useState(false);
 
   const productosPorPagina = 8;
   const categoriaId = productoActivo.categoriaId.toLowerCase();
@@ -21,51 +21,58 @@ export const ProductosView = ({ productoActivo, onBack }: Props) => {
   const esInsumoDeImpresion =
     categoriaId === "toners" || categoriaId === "cartuchos";
 
-
   const placeholderBusqueda = esInsumoDeImpresion
-  ? "Buscar por modelo..."
-  : "Buscar por modelo, tipo o detalle...";
+    ? "Buscar por modelo..."
+    : "Buscar por modelo, tipo o detalle...";
 
-      const productosFiltrados = useMemo(() => {
-      return productosLista
-        .filter((p) => {
-      const categoria = (p.categoriaId ?? "").toLowerCase();
-      const marcaProducto = (p.marca ?? "").toLowerCase();
-      const listaProducto = (p.listaId ?? "").toLowerCase();
+  const productosFiltrados = useMemo(() => {
+    return productosLista
+      .filter((p) => {
+        const categoria = (p.categoriaId ?? "").toLowerCase();
+        const marcaProducto = (p.marca ?? "").toLowerCase();
+        const listaProducto = (p.listaId ?? "").toLowerCase();
 
-      if (categoria !== categoriaId) return false;
+        if (categoria !== categoriaId) return false;
 
-      if (esInsumoDeImpresion) {
-        return marcaProducto === marca;
-      }
+        if (esInsumoDeImpresion) {
+          return marcaProducto === marca;
+        }
 
-      return listaProducto === listaId;
-    })
-    .filter((p) => {
-      const textoBusqueda = busqueda.toLowerCase().trim();
+        return listaProducto === listaId;
+      })
+      .filter((p) => {
+        const textoBusqueda = busqueda.toLowerCase().trim();
 
-      if (!textoBusqueda) return true;
+        if (!textoBusqueda) return true;
 
-      const campos = [
-        p.modelo ?? "",
-        p.nombre ?? "",
-        p.marca ?? "",
-        p.tipo ?? "",
-        p.detalle ?? "",
-        p.capacidad ?? "",
-      ]
-        .join(" ")
-        .toLowerCase();
+        const campos = [
+          p.modelo ?? "",
+          p.nombre ?? "",
+          p.marca ?? "",
+          p.tipo ?? "",
+          p.detalle ?? "",
+          p.capacidad ?? "",
+        ]
+          .join(" ")
+          .toLowerCase();
 
-      return campos.includes(textoBusqueda);
-    });
-}, [categoriaId, marca, listaId, busqueda, esInsumoDeImpresion]);
-
-
+        return campos.includes(textoBusqueda);
+      });
+  }, [categoriaId, marca, listaId, busqueda, esInsumoDeImpresion]);
 
   useEffect(() => {
     setPaginaActual(1);
   }, [busqueda, categoriaId, marca, listaId]);
+
+  useEffect(() => {
+    setAnimandoLista(true);
+
+    const timeout = setTimeout(() => {
+      setAnimandoLista(false);
+    }, 150);
+
+    return () => clearTimeout(timeout);
+  }, [paginaActual]);
 
   const totalPaginas = Math.ceil(productosFiltrados.length / productosPorPagina);
   const indiceInicial = (paginaActual - 1) * productosPorPagina;
@@ -85,20 +92,8 @@ export const ProductosView = ({ productoActivo, onBack }: Props) => {
     }
   };
 
-  useEffect(() => {
-  setAnimando(true);
-
-  const timeout = setTimeout(() => {
-    setAnimando(false);
-  }, 350);
-
-  return () => clearTimeout(timeout);
-}, [paginaActual]);
-
   return (
-    <section 
-    className="py-24 bg-white"
-    id="productos">
+    <section className="py-24 bg-white" id="productos">
       <div className="max-w-7xl mx-auto px-6">
         <button
           onClick={onBack}
@@ -107,28 +102,32 @@ export const ProductosView = ({ productoActivo, onBack }: Props) => {
           ← Volver
         </button>
 
-       <div className="mb-8 relative">
-            <input
-              type="text"
-              placeholder={placeholderBusqueda}
-              value={busqueda}
-              onChange={(e) => setBusqueda(e.target.value)}
-              className="w-full border px-4 py-2 pr-10 rounded-md"
-            />
+        <div className="mb-8 relative">
+          <input
+            type="text"
+            placeholder={placeholderBusqueda}
+            value={busqueda}
+            onChange={(e) => setBusqueda(e.target.value)}
+            className="w-full border px-4 py-2 pr-10 rounded-md"
+          />
 
-            {busqueda && (
-              <button
-                type="button"
-                onClick={() => setBusqueda("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-black"
-              >
-                ✕
-              </button>
+          {busqueda && (
+            <button
+              type="button"
+              onClick={() => setBusqueda("")}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-black"
+            >
+              ✕
+            </button>
           )}
         </div>
 
-        <div className={animando ? "slide-in-right" : ""}>
-            <ProductosLista
+        <div
+          className={`min-h-[420px] transition-all duration-150 ${
+            animandoLista ? "opacity-0 scale-[0.99]" : "opacity-100 scale-100"
+          }`}
+        >
+          <ProductosLista
             productos={productosPagina}
             categoriaId={categoriaId}
           />

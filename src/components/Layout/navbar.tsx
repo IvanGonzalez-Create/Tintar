@@ -1,4 +1,4 @@
-import Logo from "../../../public/TINTAR LOGO.png";
+import Logo from "../../../public/Tintar Logo Transparente.png";
 import { useScrolled } from "../../hooks/useScrolled";
 import { useLockBodyScroll } from "../../hooks/useLockBodyScroll";
 import { useState, useEffect } from "react";

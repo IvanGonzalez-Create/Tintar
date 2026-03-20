@@ -16,7 +16,7 @@ export const CotizacionProvider = ({ children }: { children: React.ReactNode }) 
   const agregarProducto = (producto: ProductoLista) => {
     setCotizacion((prev) => {
       const existe = prev.some((p) => p.id === producto.id);
-      if (existe) return prev; // evita duplicados
+      if (existe) return prev; 
       return [...prev, producto];
     });
   };

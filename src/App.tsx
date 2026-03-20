@@ -1,27 +1,35 @@
-import { CotizacionProvider } from "./components/Context/CotizacionContext"
-import Catalogo from "./components/Home/Catalog/Catalogo"
-import Hero from "./components/Home/Hero"
-import Navbar from "./components/Layout/Navbar"
+import { CotizacionProvider } from "./components/Context/CotizacionContext";
+import Catalogo from "./components/Home/Catalog/Catalogo";
+import Hero from "./components/Home/Hero";
+import { Servicios } from "./components/Home/Servicios";
+import Navbar from "./components/Layout/Navbar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Footer } from "./components/Layout/Footer";
 
-function App() {
-
+function Home() {
   return (
-    
-<>
-<CotizacionProvider>
-
-    <Navbar />
-
-    <Hero />
-    
-    <Catalogo />
-
-</CotizacionProvider>
-</>
-
-
-
-  )
+    <>
+      <Hero />
+      <Catalogo />
+      <Servicios />
+      <Footer/>
+    </>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <BrowserRouter>
+      <CotizacionProvider>
+        <Navbar />
+        
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </CotizacionProvider>
+    </BrowserRouter>
+  );
+}
+
+export default App;
