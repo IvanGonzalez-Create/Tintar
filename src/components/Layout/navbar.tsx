@@ -4,11 +4,7 @@ import { useLockBodyScroll } from "../../hooks/useLockBodyScroll";
 import { useState, useEffect } from "react";
 import { useCotizacion } from "../Context/CotizacionContext";
 import { X } from "lucide-react";
-
-type NavLink = {
-  label: string;
-  href: `#${string}`;
-};
+import type { NavLink } from "../../types/Navbar";
 
 export default function Navbar() {
   const [cotizacionAbierta, setCotizacionAbierta] = useState(false);

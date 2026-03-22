@@ -1,17 +1,5 @@
-export type Producto = {
-  id: string;
-  nombre: string;
-  descripcion: string;
-  marca: string;
-  imagen: string;
-  categoriaId: string;
-  subcategoriaId: string;
-  tipo?: string;
-  detalle?: string;
-  capacidad?: string;
-  modelo?: string;
-  listaId?: string;
-};
+import type { Producto } from "../types/Productos";
+
 
 export const productos: Producto[] = [
   {

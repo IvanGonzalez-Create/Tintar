@@ -1,20 +1,24 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CotizacionProvider } from "./components/Context/CotizacionContext";
+
+import Navbar from "./components/Layout/Navbar";
+import { Footer } from "./components/Layout/Footer";
 import Catalogo from "./components/Home/Catalog/Catalogo";
 import Hero from "./components/Home/Hero";
 import { Servicios } from "./components/Home/Servicios";
-import Navbar from "./components/Layout/Navbar";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Footer } from "./components/Layout/Footer";
 import { Contacto } from "./components/Home/Contacto";
+
+import AlquilerEmpresarial from "./pages/AlquilerEmpresarial";
 
 function Home() {
   return (
     <>
+      <Navbar />
       <Hero />
       <Catalogo />
       <Servicios />
-      <Contacto/>
-      <Footer/>
+      <Contacto />
+      <Footer />
     </>
   );
 }
@@ -23,11 +27,9 @@ function App() {
   return (
     <BrowserRouter>
       <CotizacionProvider>
-        <Navbar />
-        
-
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/alquiler" element={<AlquilerEmpresarial />} />
         </Routes>
       </CotizacionProvider>
     </BrowserRouter>

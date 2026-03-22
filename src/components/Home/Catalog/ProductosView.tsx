@@ -1,7 +1,6 @@
-import { useState, useMemo, useEffect } from "react";
 import { ProductosLista } from "./ProductoLista";
-import { productosLista } from "../../../data/productosLista";
-import type { Producto } from "../../../data/productos";
+import type { Producto } from "../../../types/Productos";
+import { useProductosView } from "../../../hooks/Catalogo/useProductosView";
 
 type Props = {
   productoActivo: Producto;
@@ -9,97 +8,25 @@ type Props = {
 };
 
 export const ProductosView = ({ productoActivo, onBack }: Props) => {
-  const [busqueda, setBusqueda] = useState("");
-  const [paginaActual, setPaginaActual] = useState(1);
-  const [animandoLista, setAnimandoLista] = useState(false);
-  const [saliendo, setSaliendo] = useState(false);
-
-  const productosPorPagina = 8;
-  const categoriaId = productoActivo.categoriaId.toLowerCase();
-  const marca = productoActivo.marca.toLowerCase();
-  const listaId = (productoActivo.listaId ?? "").toLowerCase();
-
-  const esInsumoDeImpresion =
-    categoriaId === "toners" || categoriaId === "cartuchos";
-
-  const placeholderBusqueda = esInsumoDeImpresion
-    ? "Buscar por modelo..."
-    : "Buscar por modelo, tipo o detalle...";
-
-  const productosFiltrados = useMemo(() => {
-    return productosLista
-      .filter((p) => {
-        const categoria = (p.categoriaId ?? "").toLowerCase();
-        const marcaProducto = (p.marca ?? "").toLowerCase();
-        const listaProducto = (p.listaId ?? "").toLowerCase();
-
-        if (categoria !== categoriaId) return false;
-
-        if (esInsumoDeImpresion) {
-          return marcaProducto === marca;
-        }
-
-        return listaProducto === listaId;
-      })
-      .filter((p) => {
-        const textoBusqueda = busqueda.toLowerCase().trim();
-
-        if (!textoBusqueda) return true;
-
-        const campos = [
-          p.modelo ?? "",
-          p.nombre ?? "",
-          p.marca ?? "",
-          p.tipo ?? "",
-          p.detalle ?? "",
-          p.capacidad ?? "",
-        ]
-          .join(" ")
-          .toLowerCase();
-
-        return campos.includes(textoBusqueda);
-      });
-  }, [categoriaId, marca, listaId, busqueda, esInsumoDeImpresion]);
-
-  useEffect(() => {
-    setPaginaActual(1);
-  }, [busqueda, categoriaId, marca, listaId]);
-
-  useEffect(() => {
-    setAnimandoLista(true);
-
-    const timeout = setTimeout(() => {
-      setAnimandoLista(false);
-    }, 150);
-
-    return () => clearTimeout(timeout);
-  }, [paginaActual]);
-
-  const handleBack = () => {
-    setSaliendo(true);
-
-    setTimeout(() => {
-      onBack();
-    }, 200);
-  };
-
-  const totalPaginas = Math.ceil(productosFiltrados.length / productosPorPagina);
-  const indiceInicial = (paginaActual - 1) * productosPorPagina;
-  const indiceFinal = indiceInicial + productosPorPagina;
-
-  const productosPagina = productosFiltrados.slice(indiceInicial, indiceFinal);
-
-  const irPaginaAnterior = () => {
-    if (paginaActual > 1) {
-      setPaginaActual((prev) => prev - 1);
-    }
-  };
-
-  const irPaginaSiguiente = () => {
-    if (paginaActual < totalPaginas) {
-      setPaginaActual((prev) => prev + 1);
-    }
-  };
+  const {
+    busqueda,
+    setBusqueda,
+    paginaActual,
+    animandoLista,
+    saliendo,
+    categoriaId,
+    placeholderBusqueda,
+    productosPagina,
+    totalPaginas,
+    handleBack,
+    cambiarPagina,
+    irPaginaAnterior,
+    irPaginaSiguiente,
+    buscadorRef,
+  } = useProductosView({
+    productoActivo,
+    onBack,
+  });
 
   return (
     <section
@@ -110,13 +37,14 @@ export const ProductosView = ({ productoActivo, onBack }: Props) => {
     >
       <div className="max-w-7xl mx-auto px-6">
         <button
+          type="button"
           onClick={handleBack}
           className="mb-6 text-sm font-medium text-[#6B0F1A] hover:underline"
         >
           ← Volver
         </button>
 
-        <div className="mb-8 relative">
+        <div ref={buscadorRef} className="mb-8 relative">
           <input
             type="text"
             placeholder={placeholderBusqueda}
@@ -136,11 +64,15 @@ export const ProductosView = ({ productoActivo, onBack }: Props) => {
           )}
         </div>
 
-        <div
-          className={`min-h-[420px] transition-all duration-150 ${
-            animandoLista ? "opacity-0 scale-[0.99]" : "opacity-100 scale-100"
-          }`}
-        >
+            <div
+              className={`transition-opacity duration-150 ${
+                productosPagina.length <= 4
+                  ? "min-h-[520px] sm:min-h-[560px] md:min-h-[620px] lg:min-h-[540px]"
+                  : "min-h-[980px] sm:min-h-[900px] md:min-h-[700px] lg:min-h-[560px]"
+              } ${
+                animandoLista ? "opacity-0" : "opacity-100"
+              }`}
+            >
           <ProductosLista
             productos={productosPagina}
             categoriaId={categoriaId}
@@ -150,6 +82,7 @@ export const ProductosView = ({ productoActivo, onBack }: Props) => {
         {totalPaginas > 1 && (
           <div className="flex flex-wrap justify-center items-center gap-2 mt-10">
             <button
+              type="button"
               onClick={irPaginaAnterior}
               disabled={paginaActual === 1}
               className={`px-4 py-2 rounded border text-sm ${
@@ -163,8 +96,9 @@ export const ProductosView = ({ productoActivo, onBack }: Props) => {
 
             {Array.from({ length: totalPaginas }, (_, i) => (
               <button
+                type="button"
                 key={i}
-                onClick={() => setPaginaActual(i + 1)}
+                onClick={() => cambiarPagina(i + 1)}
                 className={`px-3 py-2 rounded border text-sm ${
                   paginaActual === i + 1
                     ? "bg-[#6B0F1A] text-white border-[#6B0F1A]"
@@ -176,6 +110,7 @@ export const ProductosView = ({ productoActivo, onBack }: Props) => {
             ))}
 
             <button
+              type="button"
               onClick={irPaginaSiguiente}
               disabled={paginaActual === totalPaginas}
               className={`px-4 py-2 rounded border text-sm ${

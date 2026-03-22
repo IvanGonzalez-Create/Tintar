@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 import {
   Printer,
   Laptop,
@@ -24,11 +24,14 @@ export const Servicios = () => {
         </div>
 
         {/* BLOQUE DESTACADO */}
-        <Link
-          to="/alquiler"
+        <a
+          href="/alquiler"
+          target="_blank"
+          rel="noreferrer"
           className="group mb-12 block rounded-3xl bg-gradient-to-r from-[#6B0F1A] to-[#8B1E2D] p-8 text-white shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-xl"
         >
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            
             <div className="max-w-2xl">
               <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium uppercase tracking-wider">
                 <Building2 size={14} />
@@ -46,12 +49,13 @@ export const Servicios = () => {
             </div>
 
             <div className="shrink-0">
-              <span className="inline-flex items-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-[#6B0F1A] transition group-hover:scale-[1.02]">
+              <span className="inline-flex items-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-[#6B0F1A] transition group-hover:scale-[1.05] group-hover:shadow-md">
                 Ver más →
               </span>
             </div>
+
           </div>
-        </Link>
+        </a>
 
         {/* GRID DE SERVICIOS */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

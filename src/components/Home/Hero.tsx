@@ -39,12 +39,14 @@ export default function Hero() {
             Ver Productos
           </a>
 
-          <a 
-            href="#alquiler"
-            className="border border-white px-6 py-3 rounded-md font-semibold hover:bg-white hover:text-black transition-all duration-300"
-          >
-            Solicitar Alquiler
-          </a>
+            <a
+              href="/Alquiler"
+              target="_blank"
+              rel="noreferrer"
+              className="border border-white px-6 py-3 rounded-md font-semibold hover:bg-white hover:text-black transition-all duration-300"
+            >
+              Solicitar Alquiler
+            </a>
         </div>
       </div>
 

@@ -1,4 +1,4 @@
-import type { Producto } from "../../../data/productos";
+import type { Producto } from "../../../types/Productos";
 
 type Props = {
   producto: Producto;

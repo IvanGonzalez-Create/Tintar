@@ -2,7 +2,7 @@ import { useCatalogo } from "../../../hooks/useCatalogo";
 import { useState, useRef, useEffect } from "react";
 import ProductosGrid from "./ProductosGrid";
 import { ProductosView } from "./ProductosView";
-import type { Producto } from "../../../data/productos";
+import type { Producto } from "../../../types/Productos";
 
 export default function Catalogo() {
   const {

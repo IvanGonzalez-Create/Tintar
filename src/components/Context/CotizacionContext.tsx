@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import type { ProductoLista } from "../../data/productosLista";
+import type { ProductoLista } from "../../types/Productos";
 
 type CotizacionContextType = {
   cotizacion: ProductoLista[];
