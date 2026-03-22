@@ -961,6 +961,47 @@ export const productosLista: ProductoLista[] = [
     categoriaId: "toners",
   },
 
+  {
+    id: "Pampa-Oficio-70g",
+    marca: "Pampa",
+    modelo: "Papel Oficio 70g 500 hojas",
+    tipo: "Papel Oficio",
+    detalle: "Tamaño oficio 220x340 mm, ideal para uso diario",
+    categoriaId: "papeles",
+    subcategoriaId: "impresion",
+    listaId: "impresion"
+  },
+  {
+    id: "Autor-A4-75g",
+    marca: "Autor",
+    modelo: "Papel A4 75g 500 hojas",
+    tipo: "Papel A4",
+    detalle: "Papel multifunción económico para impresiones diarias",
+    categoriaId: "papeles",
+    subcategoriaId: "impresion",
+    listaId: "impresion"
+  },
+  {
+    id: "Punax-A4-75g",
+    marca: "Punax",
+    modelo: "Papel A4 75g 500 hojas",
+    tipo: "Papel A4",
+    detalle: "Papel A4 práctico y accesible para alto volumen de impresión",
+    categoriaId: "papeles",
+    subcategoriaId: "impresion",
+    listaId: "impresion"
+  },
+  {
+    id: "Autor-A4-80g",
+    marca: "Autor",
+    modelo: "Papel A4 80g 500 hojas",
+    tipo: "Papel",
+    detalle: "Mayor gramaje para mejor calidad y presentación profesional",
+    categoriaId: "papeles",
+    subcategoriaId: "a4",
+    listaId: "a4"
+  },
+
 
   {
     id: "Logitech-G213-Prodigy-RGB",
@@ -1236,6 +1277,46 @@ export const productosLista: ProductoLista[] = [
     listaId: "componentes"
   },
 
+  {
+    id: "msi-mini-pc",
+    marca: "MSI",
+    modelo: "Mini PC MSI",
+    tipo: "Computadora",
+    detalle: "Mini PC compacta con puertos USB 3.0, salida HDMI, conectividad de red y bajo consumo energético",
+    categoriaId: "tecnologia",
+    subcategoriaId: "computadoras",
+    listaId: "computadoras"
+  },
+  {
+    id: "pcbox-notebook",
+    marca: "PCBOX",
+    modelo: "Notebook PCBOX",
+    tipo: "Computadora",
+    detalle: "Notebook con pantalla HD, almacenamiento SSD y conectividad WiFi, ideal para tareas de oficina y estudio",
+    categoriaId: "tecnologia",
+    subcategoriaId: "computadoras",
+    listaId: "computadoras"
+  },
+  {
+    id: "notebook-generica-windows",
+    marca: "Genérica",
+    modelo: "Notebook Windows",
+    tipo: "Computadora",
+    detalle: "Notebook con sistema operativo Windows, procesador eficiente y almacenamiento SSD para uso cotidiano",
+    categoriaId: "tecnologia",
+    subcategoriaId: "computadoras",
+    listaId: "computadoras"
+  },
+  {
+    id: "acer-notebook",
+    marca: "Acer",
+    modelo: "Notebook Acer",
+    tipo: "Computadora",
+    detalle: "Notebook con pantalla Full HD, procesador de última generación y almacenamiento SSD para alto rendimiento",
+    categoriaId: "tecnologia",
+    subcategoriaId: "computadoras",
+    listaId: "computadoras"
+  },
   {
     id: "HP-All-in-One-24",
     marca: "HP",

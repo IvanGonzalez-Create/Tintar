@@ -75,41 +75,16 @@ export const productos: Producto[] = [
     subcategoriaId: "alternativos",
   },
   {
-    id: "resma-autor-a4-80g",
-    nombre: "Resma Autor A4",
-    descripcion: "Papel obra de 80 g/m², óptimo para impresión láser e inkjet.",
-    marca: "autor",
-    imagen: "/Productos/resma-autor-a4-80g.jpeg",
+    id: "impresion",
+    nombre: "Hojas de Impresion",
+    descripcion: "Papel A4 de alta calidad, ideal para impresiones diarias en oficinas, hogares y entornos profesionales.",
+    marca: "impresion",
+    imagen: "/Productos/Papeles-A4.png",
     categoriaId: "papeles",
-    subcategoriaId: "80gramos",
+    subcategoriaId: "impresion",
+    listaId:"impresion"
   },
-  {
-    id: "resma-autor-a4-75g",
-    nombre: "Resma Autor A4",
-    descripcion: "Gramaje liviano con buena opacidad y rendimiento diario.",
-    marca: "autor",
-    imagen: "/Productos/resma-Autor-A4-75g.jpeg",
-    categoriaId: "papeles",
-    subcategoriaId: "75gramos",
-  },
-  {
-    id: "resma-punax-a4-75g",
-    nombre: "Resma Punax A4",
-    descripcion: "Superficie uniforme para copiado y documentación interna.",
-    marca: "punax",
-    imagen: "/Productos/resma-punax-a4-75g.jpeg",
-    categoriaId: "papeles",
-    subcategoriaId: "75gramos",
-  },
-  {
-    id: "resma-pampa-a4-70g",
-    nombre: "Resma Pampa A4",
-    descripcion: "Opción económica para alto volumen de impresión.",
-    marca: "pampa",
-    imagen: "/Productos/resma-pampa-a4-70g.jpeg",
-    categoriaId: "papeles",
-    subcategoriaId: "70gramos",
-  },
+  
   {
     id: "componentes",
     nombre: "Componentes",
@@ -120,7 +95,19 @@ export const productos: Producto[] = [
     subcategoriaId: "hardware",
     listaId:"componentes"
   },
-   {
+
+  {
+    id: "computadoras",
+    nombre: "Computadoras",
+    descripcion: "Combina potencia y practicidad: desde mini PC compactas hasta notebooks versátiles para el día a día.",
+    marca: "hardware",
+    imagen: "/Productos/computadoras.png",
+    categoriaId: "tecnologia",
+    subcategoriaId: "hardware",
+    listaId:"computadoras"
+  },
+
+  {
     id: "monitores",
     nombre: "Monitores",
     descripcion: "Pantallas de alto rendimiento para trabajo, diseño y entretenimiento.",
