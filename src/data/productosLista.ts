@@ -1351,16 +1351,7 @@ export const productosLista: ProductoLista[] = [
 
 
 
-  {
-    id: "Parlante-Portatil-Mini",
-    marca: "Genérico",
-    modelo: "Mini Bluetooth",
-    tipo: "Parlante",
-    detalle: "Parlante portátil compacto con conexión Bluetooth",
-    categoriaId: "tecnologia",
-    subcategoriaId: "audio",
-    listaId: "parlantes"
-  },
+
   {
     id: "Parlante-Portatil-Mini",
     marca: "Genérico",

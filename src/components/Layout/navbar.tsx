@@ -3,6 +3,7 @@ import { useScrolled } from "../../hooks/useScrolled";
 import { useLockBodyScroll } from "../../hooks/useLockBodyScroll";
 import { useState, useEffect } from "react";
 import { useCotizacion } from "../Context/CotizacionContext";
+import { X } from "lucide-react";
 
 type NavLink = {
   label: string;
@@ -13,11 +14,35 @@ export default function Navbar() {
   const [cotizacionAbierta, setCotizacionAbierta] = useState(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  const [productoSaliendo, setProductoSaliendo] = useState<string | null>(null);
+  const [vaciandoLista, setVaciandoLista] = useState(false);
+  
+
   const { cotizacion, quitarProducto, limpiar } = useCotizacion();
 
   const scrolled = useScrolled(10);
 
   useLockBodyScroll(isOpen || cotizacionAbierta);
+
+  const handleQuitarProducto = (id: string) => {
+  setProductoSaliendo(id);
+
+    setTimeout(() => {
+      quitarProducto(id);
+      setProductoSaliendo(null);
+    }, 180);
+  };
+
+  const handleLimpiar = () => {
+  if (cotizacion.length === 0) return;
+
+  setVaciandoLista(true);
+
+  setTimeout(() => {
+    limpiar();
+    setVaciandoLista(false);
+  }, 180);
+};
 
     const mensajeWhatsapp = encodeURIComponent(
     `Hola, buenos días.\n\nQuería solicitar cotización de los siguientes productos:\n\n${cotizacion
@@ -42,7 +67,7 @@ export default function Navbar() {
   const navLinks: NavLink[] = [
     { label: "Inicio", href: "#home" },
     { label: "Productos", href: "#productos" },
-    { label: "Servicios", href: "#servicios" },
+    { label: "Servicios", href: "#Servicios" },
     { label: "Contacto", href: "#contacto" },
   ];
 
@@ -113,7 +138,7 @@ export default function Navbar() {
 
             <div>
               <a
-                href="#Alquiler"
+                href="#Servicios"
                 className="bg-[#6B0F1A] text-white px-5 py-2 rounded-md text-sm font-semibold hover:bg-[#7A1C25] transition-all duration-300"
               >
                 Alquiler Empresarial
@@ -237,13 +262,14 @@ export default function Navbar() {
               Lista de cotización
             </h2>
 
-            <button
-              type="button"
-              onClick={() => setCotizacionAbierta(false)}
-              className="text-sm text-neutral-500 hover:text-black"
-            >
-              ✕
-            </button>
+              <button
+                type="button"
+                onClick={() => setCotizacionAbierta(false)}
+                aria-label="Cerrar"
+                className="flex h-10 w-10 items-center justify-center rounded-full text-neutral-500 transition hover:bg-neutral-100 hover:text-black cursor-pointer"
+              >
+                <X size={22} />
+              </button>
           </div>
 
           <div className="flex-1 overflow-y-auto px-6 py-4">
@@ -252,55 +278,63 @@ export default function Navbar() {
                 Todavía no agregaste productos.
               </p>
             ) : (
-              <div className="space-y-4">
-                {cotizacion.map((producto) => (
-                  <div
-                    key={producto.id}
-                    className="border rounded-lg p-4 flex items-start justify-between gap-4"
-                  >
-                    <div>
-                      <h3 className="font-medium text-black">
-                        {producto.modelo ?? producto.nombre ?? "Producto"}
-                      </h3>
+        <div
+          className={`space-y-4 transition-all duration-200 ease-out ${
+            vaciandoLista ? "opacity-0 scale-[0.98]" : "opacity-100 scale-100"
+          }`}
+        >
+          {cotizacion.map((producto) => (
+            <div
+              key={producto.id}
+              className={`border rounded-lg p-4 flex items-start justify-between gap-4 transition-all duration-200 ease-out ${
+                productoSaliendo === producto.id
+                  ? "opacity-0 scale-95 -translate-y-1"
+                  : "opacity-100 scale-100 translate-y-0"
+              }`}
+            >
+              <div>
+                <h3 className="font-medium text-black">
+                  {producto.modelo ?? producto.nombre ?? "Producto"}
+                </h3>
 
-                      {producto.marca && (
-                        <p className="text-sm text-neutral-600 capitalize">
-                          Marca: {producto.marca}
-                        </p>
-                      )}
+                {producto.marca && (
+                  <p className="text-sm text-neutral-600 capitalize">
+                    Marca: {producto.marca}
+                  </p>
+                )}
 
-                      {producto.tipo && (
-                        <p className="text-sm text-neutral-600">
-                          Tipo: {producto.tipo}
-                        </p>
-                      )}
+                {producto.tipo && (
+                  <p className="text-sm text-neutral-600">
+                    Tipo: {producto.tipo}
+                  </p>
+                )}
 
-                      {producto.detalle && (
-                        <p className="text-sm text-neutral-600">
-                          Detalle: {producto.detalle}
-                        </p>
-                      )}
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={() => quitarProducto(producto.id)}
-                      className="text-sm text-red-600 hover:underline"
-                    >
-                      Quitar
-                    </button>
-                  </div>
-                ))}
+                {producto.detalle && (
+                  <p className="text-sm text-neutral-600">
+                    Detalle: {producto.detalle}
+                  </p>
+                )}
               </div>
+
+              <button
+                type="button"
+                onClick={() => handleQuitarProducto(producto.id)}
+                className="text-sm text-red-600 hover:underline cursor-pointer"
+              >
+                Quitar
+              </button>
+            </div>
+          ))}
+        </div>
             )}
           </div>
 
           <div className="border-t px-6 py-4 space-y-3">
             <button
               type="button"
-              onClick={limpiar}
+              onClick={handleLimpiar}
               disabled={cotizacion.length === 0}
-              className={`w-full py-2 rounded-md border text-sm ${
+              className={`cursor-pointer w-full py-2 rounded-md border text-sm ${
                 cotizacion.length === 0
                   ? "bg-gray-100 text-gray-400 cursor-not-allowed"
                   : "bg-white text-black hover:border-[#6B0F1A] hover:text-[#6B0F1A]"
@@ -314,7 +348,7 @@ export default function Navbar() {
               target="_blank"
               rel="noreferrer"
               onClick={() => setCotizacionAbierta(false)}
-              className={`block w-full text-center py-2 rounded-md text-sm font-medium ${
+              className={`cursor-pointer block w-full text-center py-2 rounded-md text-sm font-medium ${
                 cotizacion.length === 0
                   ? "bg-gray-100 text-gray-400 pointer-events-none"
                   : "bg-[#6B0F1A] text-white hover:opacity-90"

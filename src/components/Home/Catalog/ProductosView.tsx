@@ -12,6 +12,7 @@ export const ProductosView = ({ productoActivo, onBack }: Props) => {
   const [busqueda, setBusqueda] = useState("");
   const [paginaActual, setPaginaActual] = useState(1);
   const [animandoLista, setAnimandoLista] = useState(false);
+  const [saliendo, setSaliendo] = useState(false);
 
   const productosPorPagina = 8;
   const categoriaId = productoActivo.categoriaId.toLowerCase();
@@ -74,6 +75,14 @@ export const ProductosView = ({ productoActivo, onBack }: Props) => {
     return () => clearTimeout(timeout);
   }, [paginaActual]);
 
+  const handleBack = () => {
+    setSaliendo(true);
+
+    setTimeout(() => {
+      onBack();
+    }, 200);
+  };
+
   const totalPaginas = Math.ceil(productosFiltrados.length / productosPorPagina);
   const indiceInicial = (paginaActual - 1) * productosPorPagina;
   const indiceFinal = indiceInicial + productosPorPagina;
@@ -93,10 +102,15 @@ export const ProductosView = ({ productoActivo, onBack }: Props) => {
   };
 
   return (
-    <section className="py-24 bg-white" id="productos">
+    <section
+      id="productos"
+      className={`py-24 bg-white transition-all duration-200 ${
+        saliendo ? "opacity-0 -translate-y-2" : "opacity-100 translate-y-0"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-6">
         <button
-          onClick={onBack}
+          onClick={handleBack}
           className="mb-6 text-sm font-medium text-[#6B0F1A] hover:underline"
         >
           ← Volver

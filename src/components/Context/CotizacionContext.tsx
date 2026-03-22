@@ -10,6 +10,7 @@ type CotizacionContextType = {
 
 const CotizacionContext = createContext<CotizacionContextType | undefined>(undefined);
 
+
 export const CotizacionProvider = ({ children }: { children: React.ReactNode }) => {
   const [cotizacion, setCotizacion] = useState<ProductoLista[]>([]);
 

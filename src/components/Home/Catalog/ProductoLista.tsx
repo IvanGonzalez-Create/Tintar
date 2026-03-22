@@ -1,4 +1,3 @@
-import { Trash } from "lucide-react";
 import type { ProductoLista as ProductoListaType } from "../../../data/productosLista";
 import { useCotizacion } from "../../Context/CotizacionContext";
 import { Trash2 } from "lucide-react";
@@ -133,29 +132,36 @@ export const ProductosLista = ({ productos, categoriaId }: Props) => {
                   </td>
 
                   <td className="py-3 align-top">
-                    {yaAgregado ? (
-                      <div className="flex items-center gap-2">
-                        <span className="w-[130px] rounded-md bg-green-600 px-4 py-1 text-center text-sm whitespace-nowrap text-white">
-                          Agregado ✓
-                        </span>
+                    <div className="flex items-center gap-2 min-w-[180px]">
+                            <button
+                              type="button"
+                              onClick={() =>
+                                yaAgregado ? undefined : agregarProducto(producto)
+                              }
+                              disabled={yaAgregado}
+                              className={`w-[130px] rounded-md px-4 py-1 text-center text-sm whitespace-nowrap text-white transition ${
+                                yaAgregado
+                                  ? "bg-green-600 cursor-default"
+                                  : "bg-[#6B0F1A] hover:opacity-90 cursor-pointer"
+                              }`}
+                            >
+                              {yaAgregado ? "Agregado ✓" : "Consultar"}
+                            </button>
 
                             <button
                               type="button"
                               onClick={() => quitarProducto(producto.id)}
-                              className="p-2 rounded-md text-red-500 hover:bg-red-100 transition cursor-pointer"
+                              className={`p-2 rounded-md transition ${
+                                yaAgregado
+                                  ? "text-red-500 hover:bg-red-100 cursor-pointer"
+                                  : "invisible pointer-events-none"
+                              }`}
+                              aria-hidden={!yaAgregado}
+                              tabIndex={yaAgregado ? 0 : -1}
                             >
                               <Trash2 size={16} />
                             </button>
-                      </div>
-                    ) : (
-                      <button
-                        type="button"
-                        onClick={() => agregarProducto(producto)}
-                        className="w-[130px] rounded-md bg-[#6B0F1A] px-4 py-1 text-center text-sm whitespace-nowrap text-white transition hover:opacity-90 cursor-pointer"
-                      >
-                        Consultar
-                      </button>
-                    )}
+                    </div>
                   </td>
                 </tr>
               );

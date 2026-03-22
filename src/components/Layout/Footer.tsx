@@ -1,51 +1,59 @@
 import { Link } from "react-router-dom";
+import { MapPin } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer className="bg-neutral-950 text-white border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10">
+    <footer className="border-t border-white/10 bg-neutral-950 text-white">
+      <div className="mx-auto max-w-7xl px-4 py-7 sm:px-6 sm:py-8 lg:px-10">
+
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
 
           {/* Marca */}
-          <div className="xl:pr-8">
-            <div className="mb-4">
-              <h3 className="text-2xl font-bold tracking-tight">TINTAR</h3>
-              <p className="text-sm uppercase tracking-[0.2em] text-red-500 mt-1">
+          <div className="lg:pr-8">
+            <div className="mb-3">
+              <h3 className="text-xl font-bold tracking-tight sm:text-2xl">
+                TINTAR
+              </h3>
+              <p className="mt-1 text-[11px] uppercase tracking-[0.18em] text-red-500 sm:text-sm">
                 Insumos de impresión y tecnología
               </p>
             </div>
 
-            <p className="text-sm leading-6 text-neutral-400 max-w-sm">
+            <p className="max-w-sm text-sm leading-6 text-neutral-400">
               Soluciones en impresión, tecnología y artículos de oficina para
               empresas y particulares, con atención personalizada y respuesta rápida.
             </p>
 
-            <a
-              href="https://wa.me/541136743998"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 mt-6 rounded-xl bg-red-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-red-700"
-            >
-              Solicitar asesoramiento
-            </a>
+            <div className="mt-4 inline-flex items-start gap-2 text-sm text-neutral-400">
+              <MapPin size={16} className="mt-0.5 shrink-0 text-red-500" />
+              <span>Lagorio 704, Buenos Aires, Argentina</span>
+            </div>
           </div>
+
+          {/* Navegación + Servicios juntos en mobile */}
+          <div className="grid grid-cols-2 gap-6 lg:contents">
 
           {/* Navegación */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-white/90 mb-4">
+            <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white/90">
               Navegación
             </h4>
 
-            <ul className="space-y-3 text-sm text-neutral-400">
+            <ul className="space-y-2 text-sm text-neutral-400">
               <li>
-                <Link to="/" className="transition hover:text-white">
+                <a href="#inicio" className="transition hover:text-white">
                   Inicio
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/productos" className="transition hover:text-white">
+                <a href="#productos" className="transition hover:text-white">
                   Productos
-                </Link>
+                </a>
+              </li>
+              <li>
+                <a href="#Servicios" className="transition hover:text-white">
+                  Servicios
+                </a>
               </li>
               <li>
                 <Link to="/alquiler" className="transition hover:text-white">
@@ -53,85 +61,62 @@ export const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/contacto" className="transition hover:text-white">
+                <a href="#contacto" className="transition hover:text-white">
                   Contacto
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
 
-          {/* Servicios */}
-          <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-white/90 mb-4">
-              Servicios
-            </h4>
+            {/* Servicios */}
+            <div>
+              <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white/90">
+                Servicios
+              </h4>
 
-            <ul className="space-y-3 text-sm text-neutral-400">
-              <li className="transition hover:text-white">
-                Insumos de impresión
-              </li>
-              <li className="transition hover:text-white">
-                Tecnología
-              </li>
-              <li className="transition hover:text-white">
-                Librería
-              </li>
-              <li className="transition hover:text-white">
-                Asesoramiento personalizado
-              </li>
-              <li className="transition hover:text-white">
-                Entregas rápidas
-              </li>
-            </ul>
+              <ul className="space-y-2 text-sm text-neutral-400">
+                <li className="transition hover:text-white">
+                  Insumos de impresión
+                </li>
+                <li className="transition hover:text-white">Tecnología</li>
+                <li className="transition hover:text-white">Librería</li>
+                <li className="transition hover:text-white">
+                  Asesoramiento personalizado
+                </li>
+                <li className="transition hover:text-white">
+                  Entregas rápidas
+                </li>
+              </ul>
+            </div>
+
           </div>
 
-          {/* Contacto */}
+          {/* Información */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-white/90 mb-4">
-              Contacto
+            <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white/90">
+              Información
             </h4>
 
-            <div className="space-y-4 text-sm text-neutral-400">
-              <div>
-                <p className="text-white font-medium mb-1">WhatsApp</p>
-                <a
-                  href="https://wa.me/541136743998"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="transition hover:text-white"
-                >
-                  +54 11 3674-3998
-                </a>
-              </div>
-
-              <div>
-                <p className="text-white font-medium mb-1">Email</p>
-                <a
-                  href="mailto:ventas.tintar@gmail.com"
-                  className="transition hover:text-white break-all"
-                >
-                  ventas.tintar@gmail.com
-                </a>
-              </div>
-
-              <div>
-                <p className="text-white font-medium mb-1">Atención</p>
-                <p>Lunes a sábado</p>
-              </div>
+            <div className="space-y-2 text-sm text-neutral-400">
+              <p>Atención personalizada para empresas y particulares.</p>
+              <p>Respuesta rápida y asesoramiento comercial.</p>
+              <p>Ubicación: Lagorio 704</p>
             </div>
           </div>
+
         </div>
 
         {/* Línea inferior */}
-        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <p className="text-xs text-neutral-500">
+        <div className="mt-7 flex flex-col gap-2 border-t border-white/10 pt-4 md:mt-8 md:flex-row md:items-center md:justify-between md:gap-4 md:pt-5">
+          <p className="text-xs leading-5 text-neutral-500">
             © {new Date().getFullYear()} TINTAR. Todos los derechos reservados.
           </p>
 
-          <p className="text-xs text-neutral-500">
+          <p className="text-xs leading-5 text-neutral-500 md:text-right">
             Diseñado para brindar soluciones en impresión y equipamiento tecnológico.
           </p>
         </div>
+
       </div>
     </footer>
   );

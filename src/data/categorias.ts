@@ -27,9 +27,7 @@ export const categorias : Categoria[] = [
     nombre: "Papeles",
     destacada: true,
     subcategorias: [
-      { id: "80gramos", nombre: "80 Gramos" },
-      { id: "75gramos", nombre: "75 Gramos" },
-      { id: "70gramos", nombre: "70 Gramos" },
+      { id: "a4", nombre: "A4" },
     ],
   },
   {
