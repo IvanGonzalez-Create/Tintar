@@ -69,7 +69,7 @@ export const productos: Producto[] = [
     id: "toners-laser-gold",
     nombre: "Toners Alternativos",
     descripcion: "Opciones económicas y de alto rendimiento.",
-    marca: "alternativo",
+    marca: "Alternativo",
     imagen: "/Productos/Toners-Alternativos.png",
     categoriaId: "toners",
     subcategoriaId: "alternativos",

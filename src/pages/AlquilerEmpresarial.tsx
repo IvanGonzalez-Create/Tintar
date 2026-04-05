@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   CheckCircle2,
   Printer,
@@ -16,9 +16,9 @@ const impresoras = [
     nombre: "Samsung ML-2165W",
     costoPorCopia: 20.00,
     imagenes: [
-      "../public/Productos/Samsung ML-2165W-1.png",
-      "../public/Productos/Samsung ML-2165W-2.png",
-      "../public/Productos/Samsung ML-2165W-3.png",
+      "/Productos/Samsung ML-2165W-1.png",
+      "/Productos/Samsung ML-2165W-2.png",
+      "/Productos/Samsung ML-2165W-3.png",
     ],
     descripcion:
       "Equipo compacto y confiable, ideal para oficinas y espacios de trabajo que necesitan impresión monocromática ágil y práctica.",
@@ -35,9 +35,9 @@ const impresoras = [
     nombre: "Lexmark MX-410-DE",
     costoPorCopia: 17.00,
     imagenes: [
-      "../public/Productos/Lexmark MX-410-DE-1.png",
-      "../public/Productos/Lexmark MX-410-DE-2.png",
-      "../public/Productos/Lexmark MX-410-DE-3.png",
+      "/Productos/Lexmark MX-410-DE-1.png",
+      "/Productos/Lexmark MX-410-DE-2.png",
+      "/Productos/Lexmark MX-410-DE-3.png",
     ],
     descripcion:
       "Multifunción empresarial pensada para entornos de trabajo que requieren rendimiento, velocidad y funciones completas en un solo equipo.",
@@ -54,9 +54,9 @@ const impresoras = [
     nombre: "Brother HL-5100DN",
     costoPorCopia: 16.66,
     imagenes: [
-      "../public/Productos/Brother HL-5100DN-1.png",
-      "../public/Productos/Brother HL-5100DN-2.png",
-      "../public/Productos/Brother HL-5100DN-3.png",
+      "/Productos/Brother HL-5100DN-1.png",
+      "/Productos/Brother HL-5100DN-2.png",
+      "/Productos/Brother HL-5100DN-3.png",
     ],
     descripcion:
       "Solución robusta para empresas que buscan impresión rápida, conectividad de red y buen desempeño para uso intensivo.",
@@ -74,9 +74,9 @@ const impresoras = [
     nombre: "HP Laser MFP 137FNW",
     costoPorCopia: 24.00,
     imagenes: [
-      "../public/Productos/HP Laser MFP 137FNW-1.png",
-      "../public/Productos/HP Laser MFP 137FNW-2.png",
-      "../public/Productos/HP Laser MFP 137FNW-3.png",
+      "/Productos/HP Laser MFP 137FNW-1.png",
+      "/Productos/HP Laser MFP 137FNW-2.png",
+      "/Productos/HP Laser MFP 137FNW-3.png",
     ],
     descripcion:
       "Equipo multifunción versátil para oficinas que necesitan imprimir, copiar y escanear con conectividad simple y buen rendimiento diario.",
@@ -102,21 +102,36 @@ type CarruselProps = {
 
 function CarruselImpresora({ imagenes, nombre }: CarruselProps) {
   const [indiceActual, setIndiceActual] = useState(0);
+  const [animando, setAnimando] = useState(false);
+  const [direccion, setDireccion] = useState<"izquierda" | "derecha">("derecha");
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [touchEndX, setTouchEndX] = useState<number | null>(null);
+
+    const cambiarImagen = (
+    nuevoIndice: number,
+    nuevaDireccion: "izquierda" | "derecha"
+  ) => {
+    if (animando || nuevoIndice === indiceActual) return;
+
+    setDireccion(nuevaDireccion);
+    setAnimando(true);
+
+    setTimeout(() => {
+      setIndiceActual(nuevoIndice);
+      setAnimando(false);
+    }, 180);
+  };
 
   const tieneImagenes = imagenes && imagenes.length > 0;
 
   const irAnterior = () => {
-    setIndiceActual((prev) =>
-      prev === 0 ? imagenes.length - 1 : prev - 1
-    );
+    const nuevoIndice = indiceActual === 0 ? imagenes.length - 1 : indiceActual - 1;
+    cambiarImagen(nuevoIndice, "izquierda");
   };
 
   const irSiguiente = () => {
-    setIndiceActual((prev) =>
-      prev === imagenes.length - 1 ? 0 : prev + 1
-    );
+    const nuevoIndice = indiceActual === imagenes.length - 1 ? 0 : indiceActual + 1;
+    cambiarImagen(nuevoIndice, "derecha");
   };
 
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -153,6 +168,10 @@ function CarruselImpresora({ imagenes, nombre }: CarruselProps) {
     );
   }
 
+   useEffect(() => {
+    document.title = "Alquiler Empresarial | Tintar";
+  }, []);
+
 
 
   return (
@@ -167,7 +186,10 @@ function CarruselImpresora({ imagenes, nombre }: CarruselProps) {
           <img
             src={imagenes[indiceActual]}
             alt={`${nombre} vista ${indiceActual + 1}`}
-            className="max-h-[260px] w-auto select-none object-contain transition duration-300 sm:max-h-[320px]"
+            className={`max-h-[260px] w-auto select-none object-contain transition-all duration-300 ease-out sm:max-h-[320px] ${ animando
+                ? direccion === "derecha"
+                ? "translate-x-6 opacity-0" : "-translate-x-6 opacity-0" : "translate-x-0 opacity-100"
+            }`}
             draggable={false}
           />
         </div>
@@ -196,7 +218,7 @@ function CarruselImpresora({ imagenes, nombre }: CarruselProps) {
       </div>
 
       {imagenes.length > 1 && (
-        <div className="mt-4 flex items-center justify-center gap-3 overflow-x-auto pb-1">
+       <div className="mt-4 flex items-center justify-center gap-3 overflow-x-auto pb-1 scroll-smooth snap-x snap-mandatory">
           {imagenes.map((imagen, index) => {
             const activa = index === indiceActual;
 
@@ -204,8 +226,13 @@ function CarruselImpresora({ imagenes, nombre }: CarruselProps) {
               <button
                 key={index}
                 type="button"
-                onClick={() => setIndiceActual(index)}
-                className={`shrink-0 overflow-hidden rounded-xl border transition ${
+                onClick={() =>
+                  cambiarImagen(
+                    index,
+                    index > indiceActual ? "derecha" : "izquierda"
+                  )
+                }
+                className={`shrink-0 snap-start overflow-hidden rounded-xl border transition ${
                   activa
                     ? "border-red-500 ring-2 ring-red-500/30"
                     : "border-white/10 hover:border-white/30"
@@ -237,6 +264,10 @@ function CarruselImpresora({ imagenes, nombre }: CarruselProps) {
 
       return `https://wa.me/${numeroSoporte}?text=${encodeURIComponent(mensaje)}`;
     };
+
+
+
+
 
 export default function AlquilerEmpresarial() {
   return (
@@ -290,6 +321,35 @@ export default function AlquilerEmpresarial() {
             </p>
           </article>
         </div>
+
+              <div className="mt-8 rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-red-500">
+                      Soporte técnico
+                    </p>
+
+                    <h3 className="mt-2 text-xl font-semibold sm:text-2xl">
+                      ¿Ya tenés un equipo y necesitás asistencia?
+                    </h3>
+
+                    <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-400 sm:text-base">
+                      Contactanos para soporte técnico, revisión del equipo, mantenimiento o
+                      consultas relacionadas con el funcionamiento de tu impresora.
+                    </p>
+              </div>
+
+              <a
+                href={generarLinkSoporte()}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-red-500/30 bg-red-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-red-700"
+              >
+                <Wrench size={18} />
+                Solicitar soporte técnico
+              </a>
+        </div>
+      </div>
 
         <div className="mt-12 space-y-8">
           {impresoras.map((impresora) => (
@@ -384,34 +444,7 @@ export default function AlquilerEmpresarial() {
         </div>
       </section>
 
-      <div className="mt-8 rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-red-500">
-              Soporte técnico
-            </p>
 
-            <h3 className="mt-2 text-xl font-semibold sm:text-2xl">
-              ¿Ya tenés un equipo y necesitás asistencia?
-            </h3>
-
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-400 sm:text-base">
-              Contactanos para soporte técnico, revisión del equipo, mantenimiento o
-              consultas relacionadas con el funcionamiento de tu impresora.
-            </p>
-          </div>
-
-              <a
-                href={generarLinkSoporte()}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-red-500/30 bg-red-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-red-700"
-              >
-                <Wrench size={18} />
-                Solicitar soporte técnico
-              </a>
-        </div>
-      </div>
 
       <footer className="mt-16 border-t border-white/10 bg-black/40">
         <div className="mx-auto max-w-7xl px-6 py-8 flex flex-col items-center text-center">

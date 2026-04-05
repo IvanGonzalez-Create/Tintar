@@ -57,3 +57,6 @@ export const obtenerEstadoHorario = (): EstadoHorario => {
     texto: `Cerrado · Abre mañana a las ${formatHora(APERTURA_MIN)}`,
   };
 };
+
+
+

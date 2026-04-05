@@ -5,6 +5,7 @@ import Navbar from "./components/Layout/Navbar";
 import { Footer } from "./components/Layout/Footer";
 import Catalogo from "./components/Home/Catalog/Catalogo";
 import Hero from "./components/Home/Hero";
+import { SobreNosotros } from "./components/Home/SobreNosotros";
 import { Servicios } from "./components/Home/Servicios";
 import { Contacto } from "./components/Home/Contacto";
 
@@ -17,6 +18,7 @@ function Home() {
       <Hero />
       <Catalogo />
       <Servicios />
+      <SobreNosotros/>
       <Contacto />
       <Footer />
     </>

@@ -50,3 +50,44 @@ html {
     transform: translateX(0);
   }
 }
+
+
+
+
+.contacto-destacado {
+  animation: destacarContacto 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes destacarContacto {
+  0% {
+    background-color: rgba(255, 255, 255, 0.03);
+    transform: scale(1);
+  }
+
+  12% {
+    background-color: rgba(239, 68, 68, 0.35);
+    transform: scale(1.02);
+  }
+
+  25% {
+    background-color: rgba(239, 68, 68, 0.28);
+  }
+
+  45% {
+    background-color: rgba(239, 68, 68, 0.18);
+    transform: scale(1.015);
+  }
+
+  65% {
+    background-color: rgba(239, 68, 68, 0.10);
+  }
+
+  82% {
+    background-color: rgba(239, 68, 68, 0.05);
+  }
+
+  100% {
+    background-color: rgba(255, 255, 255, 0.03);
+    transform: scale(1);
+  }
+}

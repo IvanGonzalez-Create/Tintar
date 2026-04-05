@@ -874,92 +874,282 @@ export const productosLista: ProductoLista[] = [
     categoriaId: "toners",
   },
 
+        /*
 
-  
+          TONERS ALTERNATIVOS
+
+        */
+       
+  // =========================
+  // HP
+  // =========================
   {
     id: "cf283a-alternativo",
-    marca: "alternativo",
-    modelo: "Toner Alternativo CF283A",
+    marca: "Alternativo",
+    modelo: "Toner HP CF283A",
     capacidad: "1.500 páginas",
     categoriaId: "toners",
   },
   {
     id: "ce285a-alternativo",
-    marca: "alternativo",
-    modelo: "Toner Alternativo CE285A",
+    marca: "Alternativo",
+    modelo: "Toner HP CE285A",
     capacidad: "1.600 páginas",
     categoriaId: "toners",
   },
   {
-    id: "cb435a-alternativo",
-    marca: "alternativo",
-    modelo: "Toner Alternativo CB435A",
-    capacidad: "1.500 páginas",
+    id: "ce278a-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner HP CE278A",
+    capacidad: "2.100 páginas",
     categoriaId: "toners",
   },
   {
-    id: "cb436a-alternativo",
-    marca: "alternativo",
-    modelo: "Toner Alternativo CB436A",
-    capacidad: "2.000 páginas",
+    id: "ce505a-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner HP CE505A",
+    capacidad: "2.300 páginas",
     categoriaId: "toners",
   },
   {
-    id: "cc388a-alternativo",
-    marca: "alternativo",
-    modelo: "Toner Alternativo CC388A",
-    capacidad: "1.500 páginas",
+    id: "ce505x-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner HP CE505X",
+    capacidad: "6.500 páginas",
     categoriaId: "toners",
   },
   {
-    id: "q2612a-alternativo",
-    marca: "alternativo",
-    modelo: "Toner Alternativo Q2612A",
-    capacidad: "2.000 páginas",
+    id: "cf226a-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner HP CF226A",
+    capacidad: "3.100 páginas",
     categoriaId: "toners",
   },
+  {
+    id: "cf226x-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner HP CF226X",
+    capacidad: "9.000 páginas",
+    categoriaId: "toners",
+  },
+  {
+    id: "cf287a-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner HP CF287A",
+    capacidad: "9.000 páginas",
+    categoriaId: "toners",
+  },
+  {
+    id: "cf287x-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner HP CF287X",
+    capacidad: "18.000 páginas",
+    categoriaId: "toners",
+  },
+  {
+    id: "cf258a-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner HP CF258A",
+    capacidad: "3.000 páginas",
+    categoriaId: "toners",
+  },
+  {
+    id: "cf258x-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner HP CF258X",
+    capacidad: "10.000 páginas",
+    categoriaId: "toners",
+  },
+
+  // =========================
+  // BROTHER
+  // =========================
   {
     id: "tn660-alternativo",
-    marca: "alternativo",
-    modelo: "Toner Alternativo TN660",
+    marca: "Alternativo",
+    modelo: "Toner Brother TN660",
     capacidad: "2.600 páginas",
-    categoriaId: "toners",
-  },
-  {
-    id: "tn720-alternativo",
-    marca: "alternativo",
-    modelo: "Toner Alternativo TN720",
-    capacidad: "1.200 páginas",
     categoriaId: "toners",
   },
   {
     id: "tn750-alternativo",
-    marca: "alternativo",
-    modelo: "Toner Alternativo TN750",
+    marca: "Alternativo",
+    modelo: "Toner Brother TN750",
+    capacidad: "8.000 páginas",
+    categoriaId: "toners",
+  },
+  {
+    id: "tn780-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Brother TN780",
+    capacidad: "12.000 páginas",
+    categoriaId: "toners",
+  },
+  {
+    id: "tn760-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Brother TN760",
+    capacidad: "3.000 páginas",
+    categoriaId: "toners",
+  },
+  {
+    id: "tn770-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Brother TN770",
+    capacidad: "4.500 páginas",
+    categoriaId: "toners",
+  },
+  {
+    id: "tn850-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Brother TN850",
+    capacidad: "8.000 páginas",
+    categoriaId: "toners",
+  },
+  {
+    id: "tn880-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Brother TN880",
+    capacidad: "12.000 páginas",
+    categoriaId: "toners",
+  },
+
+  // =========================
+  // XEROX
+  // =========================
+  {
+    id: "phaser3020-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Xerox Phaser 3020",
+    capacidad: "1.500 páginas",
+    categoriaId: "toners",
+  },
+  {
+    id: "wc3225-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Xerox WorkCentre 3225",
+    capacidad: "3.000 páginas",
+    categoriaId: "toners",
+  },
+  {
+    id: "wc3345-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Xerox WorkCentre 3345",
+    capacidad: "8.500 páginas",
+    categoriaId: "toners",
+  },
+  {
+    id: "b405-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Xerox B405",
+    capacidad: "13.900 páginas",
+    categoriaId: "toners",
+  },
+  {
+    id: "b615-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Xerox B615",
+    capacidad: "25.000 páginas",
+    categoriaId: "toners",
+  },
+
+  // =========================
+  // KYOCERA
+  // =========================
+  {
+    id: "tk1160-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Kyocera TK-1160",
+    capacidad: "7.200 páginas",
+    categoriaId: "toners",
+  },
+  {
+    id: "tk1175-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Kyocera TK-1175",
+    capacidad: "12.000 páginas",
+    categoriaId: "toners",
+  },
+  {
+    id: "tk3190-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Kyocera TK-3190",
+    capacidad: "25.000 páginas",
+    categoriaId: "toners",
+  },
+  {
+    id: "tk3200-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Kyocera TK-3200",
+    capacidad: "40.000 páginas",
+    categoriaId: "toners",
+  },
+
+  // =========================
+  // RICOH
+  // =========================
+  {
+    id: "mp2554-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Ricoh MP 2554",
+    capacidad: "24.000 páginas",
+    categoriaId: "toners",
+  },
+  {
+    id: "im3500-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Ricoh IM 3500",
+    capacidad: "37.000 páginas",
+    categoriaId: "toners",
+  },
+  {
+    id: "sp310-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Ricoh SP 310",
+    capacidad: "6.400 páginas",
+    categoriaId: "toners",
+  },
+  {
+    id: "sp200-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Ricoh SP 200",
     capacidad: "2.600 páginas",
     categoriaId: "toners",
   },
+
+  // =========================
+  // LEXMARK
+  // =========================
   {
-    id: "tn1060-alternativo",
-    marca: "alternativo",
-    modelo: "Toner Alternativo TN1060",
-    capacidad: "1.000 páginas",
+    id: "e250-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Lexmark E250",
+    capacidad: "3.500 páginas",
     categoriaId: "toners",
   },
   {
-    id: "tn2340-alternativo",
-    marca: "alternativo",
-    modelo: "Toner Alternativo TN2340",
-    capacidad: "1.200 páginas",
+    id: "ms310-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Lexmark MS310",
+    capacidad: "2.500 páginas",
     categoriaId: "toners",
   },
   {
-    id: "tn2370-alternativo",
-    marca: "alternativo",
-    modelo: "Toner Alternativo TN2370",
-    capacidad: "2.600 páginas",
+    id: "ms410-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Lexmark MS410",
+    capacidad: "8.000 páginas",
     categoriaId: "toners",
   },
+  {
+    id: "ms610-alternativo",
+    marca: "Alternativo",
+    modelo: "Toner Lexmark MS610",
+    capacidad: "20.000 páginas",
+    categoriaId: "toners",
+  },
+
+
 
   {
     id: "Pampa-Oficio-70g",

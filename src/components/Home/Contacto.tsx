@@ -57,7 +57,8 @@ export const Contacto = () => {
             return (
               <article
                 key={canal.titulo}
-                className="rounded-2xl border border-white/10 bg-white/3 p-4 sm:p-5 transition hover:border-red-500/40 hover:bg-white/5"
+                id={canal.titulo === "Servicio técnico" ? "contacto-servicio-tecnico" : undefined}
+                className="scroll-mt-32 rounded-2xl border border-white/10 bg-white/3 p-4 sm:p-5 transition hover:border-red-500/40 hover:bg-white/5"
               >
                 <div className="flex items-start gap-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-red-600/15 text-red-500">
@@ -118,7 +119,8 @@ export const Contacto = () => {
             {equipoComercial.map((persona) => (
               <article
                 key={persona.nombre}
-                className="rounded-2xl border border-white/10 bg-white/3 p-4 transition hover:border-red-500/40 hover:bg-white/5 sm:p-5"
+                id={persona.nombre === "Lautaro Silva" ? "contacto-servicio-tecnico" : undefined}
+                className="scroll-mt-32 rounded-2xl border border-white/10 bg-white/3 p-4 transition-all duration-300 hover:border-red-500/40 hover:bg-white/5 sm:p-5"
               >
                 <div className="mb-3">
                   <h4 className="text-base font-semibold text-white sm:text-lg">

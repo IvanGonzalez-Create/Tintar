@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { MapPin } from "lucide-react";
 
 export const Footer = () => {
@@ -41,7 +40,7 @@ export const Footer = () => {
 
             <ul className="space-y-2 text-sm text-neutral-400">
               <li>
-                <a href="#inicio" className="transition hover:text-white">
+                <a href="#home" className="transition hover:text-white">
                   Inicio
                 </a>
               </li>
@@ -55,14 +54,24 @@ export const Footer = () => {
                   Servicios
                 </a>
               </li>
-              <li>
-                <Link to="/alquiler" className="transition hover:text-white">
-                  Alquiler empresarial
-                </Link>
+                <li>
+                <a href="#sobre-nosotros" className="transition hover:text-white">
+                  Nosotros
+                </a>
               </li>
               <li>
                 <a href="#contacto" className="transition hover:text-white">
                   Contacto
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/alquiler"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition hover:text-white"
+                >
+                  Alquiler empresarial
                 </a>
               </li>
             </ul>

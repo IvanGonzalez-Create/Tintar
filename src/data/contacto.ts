@@ -25,7 +25,7 @@ export const equipoComercial: PersonaContacto[] = [
   },
   {
     nombre: "Omar Bruno",
-    rol: "Logística · Representante comercial",
+    rol: "Representante comercial",
     telefono: "11 5379-0707",
     whatsapp: "541153790707",
     email: "",
