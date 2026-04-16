@@ -31,6 +31,26 @@ export const ProductosView = ({ productoActivo, onBack }: Props) => {
   const mostrarMensajeSinResultados =
     busqueda.trim().length > 0 && productosPagina.length === 0;
 
+  // 🔥 PAGINADOR INTELIGENTE
+  const getPaginasVisibles = () => {
+    const paginas = [];
+    const rango = 2;
+
+    for (let i = 1; i <= totalPaginas; i++) {
+      if (
+        i === 1 ||
+        i === totalPaginas ||
+        (i >= paginaActual - rango && i <= paginaActual + rango)
+      ) {
+        paginas.push(i);
+      }
+    }
+
+    return paginas;
+  };
+
+  const paginasVisibles = getPaginasVisibles();
+
   return (
     <section
       id="productos"
@@ -47,10 +67,10 @@ export const ProductosView = ({ productoActivo, onBack }: Props) => {
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#6B0F1A]/10 text-[#6B0F1A] transition-all duration-300 group-hover:bg-[#6B0F1A] group-hover:text-white">
             ←
           </span>
-
-          <span className="tracking-[0.01em]">Volver</span>
+          <span>Volver</span>
         </button>
 
+        {/* 🔍 BUSCADOR */}
         <div ref={buscadorRef} className="relative mb-8">
           <input
             type="text"
@@ -64,29 +84,29 @@ export const ProductosView = ({ productoActivo, onBack }: Props) => {
             <button
               type="button"
               onClick={() => setBusqueda("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 transition hover:text-black"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-black"
             >
               ✕
             </button>
           )}
         </div>
 
+        {/* ❌ SIN RESULTADOS */}
         {mostrarMensajeSinResultados ? (
           <div className="mb-8 rounded-2xl border border-[#6B0F1A]/20 bg-[#6B0F1A]/5 p-5 text-center shadow-sm">
             <p className="text-sm font-semibold text-[#6B0F1A] sm:text-base">
               ¿El modelo que buscaste no lo encontraste?
             </p>
 
-            <p className="mt-2 text-sm leading-6 text-neutral-600">
-              Nosotros lo conseguimos por vos. Mandanos un mensaje y lo
-              conseguimos.
+            <p className="mt-2 text-sm text-neutral-600">
+              Nosotros lo conseguimos por vos. Mandanos un mensaje.
             </p>
 
             <a
               href="https://wa.me/541136743998"
               target="_blank"
               rel="noreferrer"
-              className="mt-4 inline-flex items-center justify-center rounded-xl bg-[#6B0F1A] px-4 py-2.5 text-sm font-medium text-white transition hover:bg-[#7A1C25]"
+              className="mt-4 inline-flex items-center justify-center rounded-xl bg-[#6B0F1A] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#7A1C25]"
             >
               Consultar por WhatsApp
             </a>
@@ -106,6 +126,7 @@ export const ProductosView = ({ productoActivo, onBack }: Props) => {
           </div>
         )}
 
+        {/* 🔥 PAGINADOR */}
         {!mostrarMensajeSinResultados && totalPaginas > 1 && (
           <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
             <button
@@ -118,23 +139,32 @@ export const ProductosView = ({ productoActivo, onBack }: Props) => {
                   : "bg-white text-black hover:border-[#6B0F1A] hover:text-[#6B0F1A]"
               }`}
             >
-              ← Anterior
+              ←
             </button>
 
-            {Array.from({ length: totalPaginas }, (_, i) => (
-              <button
-                type="button"
-                key={i}
-                onClick={() => cambiarPagina(i + 1)}
-                className={`rounded border px-3 py-2 text-sm ${
-                  paginaActual === i + 1
-                    ? "border-[#6B0F1A] bg-[#6B0F1A] text-white"
-                    : "bg-white text-black hover:border-[#6B0F1A] hover:text-[#6B0F1A]"
-                }`}
-              >
-                {i + 1}
-              </button>
-            ))}
+            {paginasVisibles.map((pagina, index) => {
+              const anterior = paginasVisibles[index - 1];
+
+              return (
+                <div key={pagina} className="flex items-center gap-2">
+                  {anterior && pagina - anterior > 1 && (
+                    <span className="px-2 text-gray-400">...</span>
+                  )}
+
+                  <button
+                    type="button"
+                    onClick={() => cambiarPagina(pagina)}
+                    className={`rounded border px-3 py-2 text-sm ${
+                      paginaActual === pagina
+                        ? "border-[#6B0F1A] bg-[#6B0F1A] text-white"
+                        : "bg-white text-black hover:border-[#6B0F1A] hover:text-[#6B0F1A]"
+                    }`}
+                  >
+                    {pagina}
+                  </button>
+                </div>
+              );
+            })}
 
             <button
               type="button"
@@ -146,7 +176,7 @@ export const ProductosView = ({ productoActivo, onBack }: Props) => {
                   : "bg-white text-black hover:border-[#6B0F1A] hover:text-[#6B0F1A]"
               }`}
             >
-              Siguiente →
+              →
             </button>
           </div>
         )}

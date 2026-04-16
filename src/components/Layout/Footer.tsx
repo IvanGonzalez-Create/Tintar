@@ -109,7 +109,6 @@ export const Footer = () => {
             <div className="space-y-2 text-sm text-neutral-400">
               <p>Atención personalizada para empresas y particulares.</p>
               <p>Respuesta rápida y asesoramiento comercial.</p>
-              <p>Ubicación: Lagorio 704</p>
             </div>
           </div>
 

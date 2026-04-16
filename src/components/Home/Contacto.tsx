@@ -24,7 +24,7 @@ export const Contacto = () => {
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-3">
+          <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-3">
             <div className="rounded-2xl border border-white/10 bg-white/3 p-4">
               <p className="text-xs uppercase text-neutral-500">Atención</p>
               <p className="mt-2 text-sm font-semibold text-white">
@@ -50,58 +50,72 @@ export const Contacto = () => {
           </div>
         </div>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-3">
           {canales.map((canal) => {
             const Icono = canal.icono;
 
             return (
               <article
                 key={canal.titulo}
-                id={canal.titulo === "Servicio técnico" ? "contacto-servicio-tecnico" : undefined}
-                className="scroll-mt-32 rounded-2xl border border-white/10 bg-white/3 p-4 sm:p-5 transition hover:border-red-500/40 hover:bg-white/5"
+                id={
+                  canal.titulo === "Servicio técnico"
+                    ? "contacto-servicio-tecnico"
+                    : undefined
+                }
+                className="flex h-full min-h-[168px] flex-col rounded-2xl border border-white/10 bg-white/3 p-3.5 transition hover:border-red-500/40 hover:bg-white/5 sm:p-5"
               >
                 <div className="flex items-start gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-red-600/15 text-red-500">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-red-600/15 text-red-500 sm:h-10 sm:w-10">
                     <Icono size={18} />
                   </div>
 
-                  <div>
-                    <h3 className="text-sm font-semibold text-white">
+                  <div className="min-w-0">
+                    <h3 className="text-sm font-semibold leading-5 text-white">
                       {canal.titulo}
                     </h3>
 
                     {canal.descripcion && (
-                      <p className="mt-1 text-xs text-neutral-400">
+                      <p className="mt-1 text-xs leading-5 text-neutral-400">
                         {canal.descripcion}
                       </p>
                     )}
                   </div>
                 </div>
 
-                <div className="mt-4">
+                <div className="mt-auto pt-4">
                   {canal.href !== "#" ? (
                     <a
                       href={canal.href}
-                      target={canal.href.startsWith("https") ? "_blank" : undefined}
-                      rel={canal.href.startsWith("https") ? "noreferrer" : undefined}
-                      className="text-sm font-medium text-white hover:text-red-400"
+                      target={
+                        canal.href.startsWith("https") ? "_blank" : undefined
+                      }
+                      rel={
+                        canal.href.startsWith("https")
+                          ? "noreferrer"
+                          : undefined
+                      }
+                      className="break-words text-sm font-medium leading-5 text-white hover:text-red-400"
                     >
                       {canal.valor}
                     </a>
                   ) : (
-                    <p className="text-sm font-medium text-white">{canal.valor}</p>
+                    <p className="break-words text-sm font-medium leading-5 text-white">
+                      {canal.valor}
+                    </p>
+                  )}
+
+                  {canal.titulo === "Horario" && (
+                    <p
+                      className={`mt-2 text-xs ${
+                        estadoHorario.abierto
+                          ? "text-green-400"
+                          : "text-red-400"
+                      }`}
+                    >
+                      {estadoHorario.texto}
+                    </p>
                   )}
                 </div>
-
-                {canal.titulo === "Horario" && (
-                  <p
-                    className={`mt-2 text-xs ${
-                      estadoHorario.abierto ? "text-green-400" : "text-red-400"
-                    }`}
-                  >
-                    {estadoHorario.texto}
-                  </p>
-                )}
               </article>
             );
           })}
@@ -109,7 +123,9 @@ export const Contacto = () => {
 
         <div className="mt-12">
           <div className="mb-5">
-            <p className="text-xs uppercase text-neutral-500">Equipo comercial</p>
+            <p className="text-xs uppercase text-neutral-500">
+              Equipo comercial
+            </p>
             <h3 className="mt-2 text-xl font-semibold text-white sm:text-2xl">
               Contactá al área indicada
             </h3>
@@ -119,7 +135,11 @@ export const Contacto = () => {
             {equipoComercial.map((persona) => (
               <article
                 key={persona.nombre}
-                id={persona.nombre === "Lautaro Silva" ? "contacto-servicio-tecnico" : undefined}
+                id={
+                  persona.nombre === "Lautaro Silva"
+                    ? "contacto-servicio-tecnico"
+                    : undefined
+                }
                 className="scroll-mt-32 rounded-2xl border border-white/10 bg-white/3 p-4 transition-all duration-300 hover:border-red-500/40 hover:bg-white/5 sm:p-5"
               >
                 <div className="mb-3">
@@ -161,7 +181,9 @@ export const Contacto = () => {
                   )}
                 </div>
 
-                <p className="mt-3 text-sm text-neutral-400">{persona.telefono}</p>
+                <p className="mt-3 text-sm text-neutral-400">
+                  {persona.telefono}
+                </p>
               </article>
             ))}
           </div>

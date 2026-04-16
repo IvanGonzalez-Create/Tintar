@@ -58,7 +58,7 @@ export default function Navbar() {
 
   
 
-  const linkWhatsapp = `https://wa.me/5491158761306?text=${mensajeWhatsapp}`;
+  const linkWhatsapp = `https://wa.me/5491136743998?text=${mensajeWhatsapp}`;
 
   const navLinks: NavLink[] = [
     { label: "Inicio", href: "#inicio" },

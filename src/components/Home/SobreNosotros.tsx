@@ -13,7 +13,7 @@ export const SobreNosotros = () => {
 
         <button
           onClick={() => setAbierto(!abierto)}
-          className="group mt-6 flex w-full items-center justify-between gap-4 rounded-2xl border border-[#6B0F1A]/30 bg-white px-4 py-4 text-left shadow-sm transition-all duration-300 hover:bg-[#6B0F1A]/5 sm:px-6 sm:py-5"
+          className=" cursor-pointer group mt-6 flex w-full items-center justify-between gap-4 rounded-2xl border border-[#6B0F1A]/30 bg-white px-4 py-4 text-left shadow-sm transition-all duration-300 hover:bg-[#6B0F1A]/5 sm:px-6 sm:py-5"
         >
           <div className="min-w-0">
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#6B0F1A] sm:text-xs">

@@ -65,7 +65,7 @@ export const Servicios = () => {
           className="group mb-12 block rounded-3xl bg-gradient-to-r from-[#6B0F1A] to-[#8B1E2D] p-6 sm:p-8 text-white shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-xl"
         >
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div className="max-w-2xl">
+            <div id="servicioTecnico" className="max-w-2xl">
               <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium uppercase tracking-wider">
                 <Building2 size={14} />
                 Solución destacada
@@ -124,7 +124,7 @@ export const Servicios = () => {
               <button
                 type="button"
                 onClick={irAContacto}
-                className="inline-flex w-full sm:w-auto items-center justify-center rounded-xl bg-[#6B0F1A] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#7A1C25]"
+                className="cursor-pointer inline-flex w-full sm:w-auto items-center justify-center rounded-xl bg-[#6B0F1A] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#7A1C25]"
               >
                 Consultar servicio técnico
               </button>

@@ -1,19 +1,19 @@
 export default function Hero() {
   return (
-    <section
-      id="inicio"
-      className="relative flex min-h-[88vh] items-center justify-center overflow-hidden text-white sm:min-h-screen"
-    >
-      <div className="absolute inset-0 overflow-hidden">
-        <video
-          src="/Video de fondo Hero.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="h-full w-full object-cover"
-        />
-      </div>
+      <section
+        id="inicio"
+        className="relative flex min-h-[80vh] items-center justify-center overflow-hidden text-white sm:min-h-screen"
+      >
+        <div className="absolute inset-0 overflow-hidden">
+          <video
+            src="/Video de fondo Hero.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="h-full w-full object-cover object-[center_25%] sm:object-center"
+          />
+        </div>
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/65" />
@@ -24,7 +24,7 @@ export default function Hero() {
  
 
           <h1 className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl lg:text-4xl">
-            Soluciones empresariales en insumos, alquiler y servicio técnico
+            Soluciones Empresariales en Insumos, Alquiler y Servicio Técnico
           </h1>
 
           <p className="mx-auto mt-5 max-w-2xl text-sm leading-6 text-gray-200 sm:mt-6 sm:text-base md:text-lg">

@@ -14,7 +14,6 @@ const impresoras = [
   {
     id: 1,
     nombre: "Samsung ML-2165W",
-    costoPorCopia: 20.00,
     imagenes: [
       "/Productos/Samsung ML-2165W-1.png",
       "/Productos/Samsung ML-2165W-2.png",
@@ -33,7 +32,6 @@ const impresoras = [
   {
     id: 2,
     nombre: "Lexmark MX-410-DE",
-    costoPorCopia: 17.00,
     imagenes: [
       "/Productos/Lexmark MX-410-DE-1.png",
       "/Productos/Lexmark MX-410-DE-2.png",
@@ -52,7 +50,6 @@ const impresoras = [
   {
     id: 3,
     nombre: "Brother HL-5100DN",
-    costoPorCopia: 16.66,
     imagenes: [
       "/Productos/Brother HL-5100DN-1.png",
       "/Productos/Brother HL-5100DN-2.png",
@@ -72,7 +69,6 @@ const impresoras = [
   {
     id: 4,
     nombre: "HP Laser MFP 137FNW",
-    costoPorCopia: 24.00,
     imagenes: [
       "/Productos/HP Laser MFP 137FNW-1.png",
       "/Productos/HP Laser MFP 137FNW-2.png",
@@ -92,7 +88,7 @@ const impresoras = [
 
 const generarLinkWhatsapp = (nombre: string) => {
   const mensaje = `Hola, buenos días. Quería consultar por el alquiler de ${nombre}.`;
-  return `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+  return `https://wa.me/${numeroWhatsApp2}?text=${encodeURIComponent(mensaje)}`;
 };
 
 type CarruselProps = {
@@ -173,7 +169,6 @@ function CarruselImpresora({ imagenes, nombre }: CarruselProps) {
   }, []);
 
 
-
   return (
     <div className="w-full">
       <div
@@ -199,7 +194,7 @@ function CarruselImpresora({ imagenes, nombre }: CarruselProps) {
             <button
               type="button"
               onClick={irAnterior}
-              className="absolute left-3 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/50 text-white backdrop-blur transition hover:bg-black/70 sm:inline-flex"
+              className="cursor-pointer absolute left-3 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/50 text-white backdrop-blur transition hover:bg-black/70 sm:inline-flex"
               aria-label="Imagen anterior"
             >
               <ChevronLeft size={20} />
@@ -208,7 +203,7 @@ function CarruselImpresora({ imagenes, nombre }: CarruselProps) {
             <button
               type="button"
               onClick={irSiguiente}
-              className="absolute right-3 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/50 text-white backdrop-blur transition hover:bg-black/70 sm:inline-flex"
+              className="cursor-pointer absolute right-3 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/50 text-white backdrop-blur transition hover:bg-black/70 sm:inline-flex"
               aria-label="Imagen siguiente"
             >
               <ChevronRight size={20} />
@@ -253,9 +248,7 @@ function CarruselImpresora({ imagenes, nombre }: CarruselProps) {
     </div>
   );
 }
-
-    const numeroWhatsApp = "541136743998";
-
+    const numeroWhatsApp2 = "541158761306";
     const numeroSoporte = "541157470740";
 
     const generarLinkSoporte = () => {
@@ -389,22 +382,8 @@ export default function AlquilerEmpresarial() {
                       </div>
                     ))}
                   </div>
+               
                   
-                  <div className="mt-6">
-                      <div className="inline-flex items-center gap-3 rounded-2xl bg-gradient-to-r from-red-600/20 to-red-500/10 px-5 py-3 border border-red-500/30 shadow-lg">
-                        
-                        <div className="flex flex-col leading-tight">
-                          <span className="text-xs uppercase tracking-wider text-red-400">
-                            Costo por copia
-                          </span>
-                          <span className="text-xl font-bold text-white">
-                            ${impresora.costoPorCopia.toFixed(2)}
-                          </span>
-                        </div>
-
-                      </div>
-                    </div>
-
                   <a
                     href={generarLinkWhatsapp(impresora.nombre)}
                     target="_blank"
@@ -431,7 +410,7 @@ export default function AlquilerEmpresarial() {
           </p>
 
           <a
-            href={`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(
+            href={`https://wa.me/${numeroWhatsApp2}?text=${encodeURIComponent(
               "Hola, buenos días. Quería recibir asesoramiento sobre alquiler de impresoras."
             )}`}
             target="_blank"
